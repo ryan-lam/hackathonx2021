@@ -27,7 +27,7 @@ class Course(models.Model):
     item = models.ManyToManyField(Item, related_name='courses')
 
     def __str__(self):
-        items = [str(item) for item in self.item.all()].join('\n')
+        items = '\n'.join([str(item) for item in self.item.all()])
         return f'Code: {self.code} \n, {items}'
 
 
