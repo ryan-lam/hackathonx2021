@@ -7,3 +7,8 @@ from .models import *
 # Create your views here.
 def index(request):
     return render(request, "index.html")
+
+def test_image(request, pk):
+    item = Item.objects.get(pk=pk)
+    print(item.img.url)
+    return render(request, "test.html", {'item': item})
