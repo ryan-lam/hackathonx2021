@@ -2,12 +2,20 @@ from django.db import models
 
 # Create your models here.
 
+class user(models.Model):
+    username = models.CharField(max_length="64", unique=True)
+    password = models.CharField(max_length="64")
+    name = models.CharField(max_length="64")
+
 class Item(models.Model):
-    id_ = models.CharField(max_length="200", required=True)
     name = models.CharField(max_length="200")
-    art_type = models.CharField(max_length="200")
+    category = models.CharField(max_length="200", null=True)
+    description = models.CharField(max_length="3000")
     img = models.ImageField()
 
 class Course(models.Model):
     code = models.OneToOneField()
     sequence = models.ExpressionList
+
+
+
