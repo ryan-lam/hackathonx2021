@@ -4,7 +4,10 @@ from django import forms
 from django.urls import reverse
 from .models import *
 from project import settings
-import random
+import random, string
+
+def generate_code():
+    return ''.join(random.choice(string.ascii_uppercase + string.digits) for i in range(7))
 
 ####### VIEWS ################################################
 def index(request):
