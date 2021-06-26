@@ -102,6 +102,19 @@ def signup(request):
             return render(request, 'test.html', data)
 
 
+def saved(request):
+    try:
+        username = request.session["username"]
+        user = User.objects.get(username=username)
+        saved_items = SavedItem.objects.filter(user=user.id)
+        return render(request, 'saved.html', {
+            "saved_items":saved_items
+        })
+    except:
+        print("NEED TO LOGIN")
+        return render(request, 'index.html')
+
+
 
 
 
