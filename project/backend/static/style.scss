@@ -194,6 +194,8 @@ body{
         background-size: cover;
         background-position: center;
         position: relative;
+        border-radius: 20px;
+        overflow: hidden;
         
         &:hover{
             cursor: pointer;
@@ -207,6 +209,8 @@ body{
         & > h3{
             opacity: 0; 
             font-size: 1.5rem;
+            // border-top-left-radius: 20px;
+            // border-top-right-radius: 20px;
         }
 
         & > h1{
@@ -249,6 +253,7 @@ body{
         // background-color: gainsboro;
         color: black;
         border-bottom: solid 2px black;
+        display: none;
 
         & > img{
             margin-left: 10px;
@@ -285,19 +290,19 @@ body{
     width: fit-content;
 }
 
-//////////////////CREATE EXPLORE PAGE////////////////////
+////////////////// EXPLORE PAGE////////////////////
 
-//////////////////CREATE EXPLORE PAGE////////////////////
+////////////////// EXPLORE PAGE////////////////////
 
-//////////////////CREATE EXPLORE PAGE////////////////////
+////////////////// EXPLORE PAGE////////////////////
 
-//////////////////CREATE EXPLORE PAGE////////////////////
+////////////////// EXPLORE PAGE////////////////////
 
-//////////////////CREATE EXPLORE PAGE////////////////////
+////////////////// EXPLORE PAGE////////////////////
 
-//////////////////CREATE EXPLORE PAGE////////////////////
+////////////////// EXPLORE PAGE////////////////////
 
-//////////////////CREATE EXPLORE PAGE////////////////////
+////////////////// EXPLORE PAGE////////////////////
 
 .whole{
     width: 100%;
@@ -313,8 +318,8 @@ body{
     border: none;
     width: 80%;
     // margin-left: 4rem;
-    height: fit-content;
- 
+    height: 75%;
+    position: relative;
     border-radius: 20px;
     box-shadow: 0px 0px 10px 0px #bfbfbf;
     margin: auto;
@@ -330,7 +335,7 @@ body{
         display: flex;
         flex-direction: row;
         align-items: stretch;
-        height: 300px;
+        height: 70%;
         margin: auto;
         
 
@@ -357,6 +362,9 @@ body{
                 margin-top: 10px;
             }
         }
+        & > .text::-webkit-scrollbar {
+            display: none;
+        }
 
         & > .img{
             background-size: cover;
@@ -366,32 +374,34 @@ body{
 
     }
 
-    &__buttons{
-        width: 50%;
-        margin: auto;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: stretch;
-        user-select: none;
+    // &__buttons{
+    //     width: 50%;
+    //     margin: auto;
+    //     display: flex;
+    //     flex-direction: row;
+    //     justify-content: space-between;
+    //     align-items: stretch;
+    //     user-select: none;
+    //     position: relative;
+    //     margin-bottom: 0;
+    //     bottom: 0;
 
+    //     & > button{
+    //         width: 40%;
+    //         background-color: #42b983;
+    //         font-size: 2rem;
+    //         padding: 10px 20px;
+    //         border: none;
+    //         border-radius: 20px;
+    //         color: white;
 
-        & > button{
-            width: 40%;
-            background-color: #42b983;
-            font-size: 2rem;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            color: white;
+    //         &:hover{
+    //             cursor: pointer;
+    //             background-color: #329669;
+    //         }
 
-            &:hover{
-                cursor: pointer;
-                background-color: #329669;
-            }
-
-        }
-    }
+    //     }
+    // }
 }
 
 .course-code{
@@ -479,7 +489,33 @@ body{
         color: white;
         border-radius: 10px;
     }
-    
+}
 
+.footer{
+    margin-bottom: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    bottom: 10px;
+    height: fit-content;
     
+     
+    & > a{
+        width: 30%;
+        display: block;
+        text-align: center;
+        background-color: black;
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+        padding: 8px 0px;
+        font-size: 1.5rem;
+
+        &:hover{
+            background-color: #3a3a3a;
+            cursor: pointer;
+        }
+    }
 }

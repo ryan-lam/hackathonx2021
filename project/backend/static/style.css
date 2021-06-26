@@ -128,7 +128,9 @@ body {
     border: solid 2px black;
     background-size: cover;
     background-position: center;
-    position: relative; }
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden; }
     .create__inside:hover {
       cursor: pointer; }
     .create__inside:hover h3 {
@@ -166,7 +168,8 @@ body {
   margin-top: 20px;
   padding: 5px 20px;
   color: black;
-  border-bottom: solid 2px black; }
+  border-bottom: solid 2px black;
+  display: none; }
   .create__form > p > img {
     margin-left: 10px;
     margin-top: 2px; }
@@ -200,7 +203,8 @@ body {
   background-color: white;
   border: none;
   width: 80%;
-  height: fit-content;
+  height: 75%;
+  position: relative;
   border-radius: 20px;
   box-shadow: 0px 0px 10px 0px #bfbfbf;
   margin: auto; }
@@ -213,7 +217,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    height: 300px;
+    height: 70%;
     margin: auto; }
     .artifact__content > div {
       width: 50%; }
@@ -229,29 +233,12 @@ body {
         text-align: center;
         font-size: 1.5rem;
         margin-top: 10px; }
+    .artifact__content > .text::-webkit-scrollbar {
+      display: none; }
     .artifact__content > .img {
       background-size: cover;
       background-position: center;
       border: solid 3px black; }
-  .artifact__buttons {
-    width: 50%;
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: stretch;
-    user-select: none; }
-    .artifact__buttons > button {
-      width: 40%;
-      background-color: #42b983;
-      font-size: 2rem;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 20px;
-      color: white; }
-      .artifact__buttons > button:hover {
-        cursor: pointer;
-        background-color: #329669; }
 
 .course-code {
   height: fit-content;
@@ -309,3 +296,26 @@ body {
     margin-left: 30px;
     color: white;
     border-radius: 10px; }
+
+.footer {
+  margin-bottom: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+  height: fit-content; }
+  .footer > a {
+    width: 30%;
+    display: block;
+    text-align: center;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 8px 0px;
+    font-size: 1.5rem; }
+    .footer > a:hover {
+      background-color: #3a3a3a;
+      cursor: pointer; }

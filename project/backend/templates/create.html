@@ -25,7 +25,7 @@
             <button type="submit" class="generate">Generate Code</button>
             
 
-            <p class="generated-code" style="user-select: none;">{{ code }}<img src="https://img.icons8.com/material-outlined/24/000000/copy.png" class="copy"/></p>
+            <p class="generated-code">{{ code }}<img src="https://img.icons8.com/material-outlined/24/000000/copy.png" class="copy"/></p>
             <div style="height: 30px;"></div>
         </form>
         
@@ -99,6 +99,7 @@
             if(element.textContent != ""){
                 generate.remove();
                 message.textContent = "Copy the code below to show your course to your students!";
+                element.style.display = "block";
             }
             
             // generate.addEventListener("click", (e) => {
