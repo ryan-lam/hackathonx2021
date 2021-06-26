@@ -27,10 +27,10 @@ def create(request):
         new_course = Course(code=code)
         new_course.save()
         for i, item in enumerate(items):
-            new_course.items.add(item, through_defaults={'order': i})
+            new_course.items.add(item, through_defaults={'index': i})
         data = dict(request.POST)
         data.update({"code": code})
-        return render(request, 'create.html', data)
+        return render(request, "create.html", data)
 
 def explore(request):
     random_id = random.randint(2, Item.objects.count())
@@ -39,6 +39,21 @@ def explore(request):
     return render(request, "explore.html", {
         "item":item
     })
+
+def load(request, code):
+    course = Course.objects.get(code=code)
+    sequences = Sequence.objects.filter(course=course)
+    items = [sequence.item.name for sequence in sequences]
+    print(items)
+    return render(request, "index.html")
+
+def getCourseItem(request, code, index):
+    course = Course.objects.get(code=code)
+    sequence = Sequence.objects.get(course=course, index=index)
+    print(sequence.item)
+    return render(request, "index.html", {"item": sequence.item})
+
+
 
 
 

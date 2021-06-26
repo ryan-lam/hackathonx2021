@@ -34,7 +34,7 @@ class Course(models.Model):
 class Sequence(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    order = models.IntegerField()
+    index = models.IntegerField()
 
     def __str__(self):
         return f'Course: {self.course.code}, Order: {self.order}, Item: {self.item.name}'

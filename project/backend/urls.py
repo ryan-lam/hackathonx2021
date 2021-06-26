@@ -9,6 +9,8 @@ urlpatterns = [
     path('', views.index, name="index"),
     path('create', views.create, name="create"),
     path('explore', views.explore, name="explore"),
+    path('load/<str:code>', views.load, name="load"),
+    path('load/<str:code>/<int:index>', views.getCourseItem, name="getItem"),
 
     ####### TESTING ######################## 
     path('img/<int:pk>', views.test_image),
