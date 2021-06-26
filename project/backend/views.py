@@ -65,6 +65,7 @@ def discussion(request, item_pk=2):
     # DISCUSSION POST ITEM_PK MUST BE GREATER THAN 1
     if request.method == 'GET':
         dps = DiscussionPost.objects.filter(item=Item.objects.get(id=item_pk))
+        print(dps)
         item = Item.objects.get(id=item_pk)
         data = {"posts":dps, "item":item, "loggedIn": False}
         if "username" in request.session:
