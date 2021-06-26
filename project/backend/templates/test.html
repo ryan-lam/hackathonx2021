@@ -4,6 +4,14 @@
         Hi
     </header>
     <body>
-        <img src="{{item.img.url}}">
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="username">
+            <input type="text" name="password" placeholder="password">
+            <input type="text" name="name" placeholder="name">
+            <button type="submit">Get Course</button>
+        </form>
+        <p> {{ loginSuccess }}</p>
+        <p> {{ signupSuccess }}</p>
     </body>
 </html>

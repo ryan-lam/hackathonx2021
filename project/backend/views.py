@@ -5,6 +5,7 @@ from django.urls import reverse
 from .models import *
 from project import settings
 import random, string
+from django.db import IntegrityError
 
 def generate_code():
     return ''.join(random.choice(string.ascii_uppercase + string.digits) for i in range(7))
@@ -59,14 +60,62 @@ def course(request, code, index=0):
     except:
         return render(request, "course_not_found.html")
 
+
 def discussion(request, item_pk=2):
     # DISCUSSION POST ITEM_PK MUST BE GREATER THAN 1
-    dps = DiscussionPost.objects.filter(item=item_pk)
-    item = Item.objects.get(id=item_pk)
-    return render(request, "discussion.html", {
-        "posts":dps, "item":item
-    })
-    
+    if request.method == 'GET':
+        dps = DiscussionPost.objects.filter(item=item_pk)
+        item = Item.objects.get(id=item_pk)
+        loggedIn = True if "username" in request.session else False
+        print(loggedIn)
+        return render(request, "discussion.html", {
+            "posts":dps, "item":item, "loggedIn": loggedIn
+        })
+
+def login(request):
+    if request.method == 'GET':
+        return render(request, 'test.html')
+    elif request.method == 'POST':
+        try:
+            data = dict(request.POST)
+            user = User.objects.get(username=request.POST["username"])
+            if request.POST["password"] == user.password:
+                request.session["username"] = request.POST["username"]
+                data.update({"loginSuccess": True})
+                return render(request, 'test.html', data)
+        except User.DoesNotExist:
+            data.update({"loginSuccess": False})
+            return render(request, 'test.html', data)
+
+def signup(request):
+    if request.method == 'GET':
+        return render(request, 'test.html')
+    elif request.method == 'POST':
+        try:
+            data = dict(request.POST)
+            user = User(username=request.POST["username"], 
+                        password=request.POST["password"],
+                        name=request.POST["name"])
+            user.save()
+            data.update({"signupSuccess": True})
+            request.session["username"] = request.POST["username"]
+            return render(request, 'test.html', data)
+        except IntegrityError:
+            data.update({"signupSuccess": False})
+            return render(request, 'test.html', data)
+
+
+def saved(request):
+    try:
+        username = request.session["username"]
+        user = User.objects.get(username=username)
+        saved_items = SavedItem.objects.filter(user=user.id)
+        return render(request, 'saved.html', {
+            "saved_items":saved_items
+        })
+    except:
+        print("NEED TO LOGIN")
+        return render(request, 'index.html')
 
 
 
@@ -75,8 +124,9 @@ def discussion(request, item_pk=2):
 
 
 
-
-
+def clear(request):
+    request.session.flush()
+    return HttpResponseRedirect(reverse("index"))
 
 ####### TESTING ################################################
 def test_image(request, pk): # TESTING SINGLE IMGS
