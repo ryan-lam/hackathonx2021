@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "node-sass ./static/style.scss ./templates/style.css -w"
+    "compile": "node-sass ./static/style.scss ./static/style.css -w"
   },
   "author": "Jax, Ryan, Michael",
   "license": "ISC",
