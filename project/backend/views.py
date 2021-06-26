@@ -11,5 +11,6 @@ def index(request):
 
 def test_image(request, pk):
     item = Item.objects.get(pk=pk)
-    print(item.img.url)
+    print(item)
+    # print(item.img.url)
     return render(request, "test.html", {"item": item})
