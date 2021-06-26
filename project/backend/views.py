@@ -134,8 +134,9 @@ def signup(request):
 
 
 
-def save(request, code):
+def save(request):
     try:
+        code = request.POST["item_code"]
         item = Item.objects.get(id=code)
         username = request.session["username"]
         user = User.objects.get(username=username)
