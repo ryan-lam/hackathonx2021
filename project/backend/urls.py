@@ -13,6 +13,8 @@ urlpatterns = [
     path('course/<str:code>', views.course, name="course"),
 
     path('discussion/<str:item_pk>', views.discussion, name="discussion"),
+    path('login', views.login, name='login'),
+    path('signup', views.signup, name='signup'),
 
     ####### TESTING ######################## 
     path('img/<int:pk>', views.test_image),
