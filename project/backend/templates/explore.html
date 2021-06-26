@@ -1,9 +1,12 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
-    <head>
-        <title>HII</title>
-    </head>
+    <header>
+        <h1>EXPLORE</h1>
+    </header>
     <body>
-        <h1>OMG IT WORKS</h1>
+        <img src="{{ item.img.url }}">
+        <h1>{{ item.name }}</h1>
+        <h4>{{ item.category }}</h4>
+        <p>{{ item.description | linebreaksbr }}</p>
     </body>
 </html>
