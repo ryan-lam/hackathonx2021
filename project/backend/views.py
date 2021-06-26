@@ -4,6 +4,7 @@ from django import forms
 from django.urls import reverse
 from .models import *
 from project import settings
+import random
 
 ####### VIEWS ################################################
 def index(request):
@@ -15,8 +16,13 @@ def create(request):
         "items": items
     })
 
-
-
+def explore(request):
+    random_id = random.randint(2, Item.objects.count())
+    item = Item.objects.get(id=random_id)
+    print(item)
+    return render(request, "explore.html", {
+        "item":item
+    })
 
 
 

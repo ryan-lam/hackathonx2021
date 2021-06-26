@@ -8,6 +8,7 @@ urlpatterns = [
     ####### REAL URLS ######################
     path('', views.index, name="index"),
     path('create', views.create, name="create"),
+    path('explore', views.explore, name="explore"),
 
     ####### TESTING ######################## 
     path('img/<int:pk>', views.test_image),
