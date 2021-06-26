@@ -40,18 +40,18 @@ def explore(request):
         "item":item
     })
 
-def load(request, code):
+def course(request, code, index):
     course = Course.objects.get(code=code)
-    sequences = Sequence.objects.filter(course=course)
-    items = [sequence.item.name for sequence in sequences]
-    print(items)
-    return render(request, "index.html")
+    try:
+        index+=1
+        sequence = Sequence.objects.get(course=course, index=index)
+        print(sequence.item)
+        return render(request, "course.html", {
+            "item":sequence.item, "code":code, "next_index":index
+            })
+    except:
+        return HttpResponseRedirect(reverse('index'))
 
-def getCourseItem(request, code, index):
-    course = Course.objects.get(code=code)
-    sequence = Sequence.objects.get(course=course, index=index)
-    print(sequence.item)
-    return render(request, "index.html", {"item": sequence.item})
 
 
 

@@ -37,6 +37,6 @@ class Sequence(models.Model):
     index = models.IntegerField()
 
     def __str__(self):
-        return f'Course: {self.course.code}, Order: {self.order}, Item: {self.item.name}'
+        return f'Course: {self.course.code}, index: {self.index}, Item: {self.item.name}'
 
 
