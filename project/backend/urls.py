@@ -11,7 +11,8 @@ urlpatterns = [
     path('explore', views.explore, name="explore"),
     path('course/<str:code>/<int:index>', views.course, name="course"),
     path('course/<str:code>', views.course, name="course"),
-
+    
+    path('discussion', views.discussion, name="discussion"),
     path('discussion/<str:item_pk>', views.discussion, name="discussion"),
 
     ####### TESTING ######################## 

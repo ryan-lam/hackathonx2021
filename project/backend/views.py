@@ -59,6 +59,7 @@ def course(request, code, index=0):
     except:
         return render(request, "course_not_found.html")
 
+
 def discussion(request, item_pk=2):
     # DISCUSSION POST ITEM_PK MUST BE GREATER THAN 1
     dps = DiscussionPost.objects.filter(item=item_pk)

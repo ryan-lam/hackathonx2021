@@ -44,15 +44,20 @@
         <h1>----------------------------------------------</h1>
         <h1>POSTS</h1>
 
+        <form>
+            <h3>Write a post and join the discussion</h3>
+            <textarea id="textarea" name="textarea" rows="4" cols="50"></textarea>
+            <input type="submit">
+        </form>
+
+        <br>
+        <br>
+
         {% for item in posts %}
             <h4>{{ item.user.name }} — {{ item.time }}</h4>
             <p>{{ item.post }}</p>
         {% endfor %}
 
-        <p>HIIIIIIIIIII</p>
-        <p>HIIIIIIIIIII</p>
-        <p>HIIIIIIIIIII</p>
-        <p>HIIIIIIIIIII</p>
         <p>HIIIIIIIIIII</p>
         <p>HIIIIIIIIIII</p>
         <p>HIIIIIIIIIII</p>
