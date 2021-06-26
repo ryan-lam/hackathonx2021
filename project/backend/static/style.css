@@ -158,28 +158,37 @@ body {
     cursor: pointer; }
 
 .create__form > p {
+  display: block;
   font-size: 1.5rem;
+  width: fit-content;
   margin: auto;
   text-align: center;
   margin-top: 20px;
-  width: 300px;
-  background-color: gainsboro;
-  color: black; }
+  padding: 5px 20px;
+  color: black;
+  border-bottom: solid 2px black; }
+  .create__form > p > img {
+    margin-left: 10px;
+    margin-top: 2px; }
+  .create__form > p:hover {
+    cursor: pointer; }
 
 .back-button {
   position: absolute;
   background-color: black;
   color: white;
-  width: 100px;
   height: fit-content;
   border: none;
   display: block;
   text-decoration: none;
   text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px 20px;
+  border-radius: 10px;
   margin-top: 15px;
-  margin-left: 15px; }
+  margin-left: 15px;
+  top: 5px;
+  left: 10px;
+  width: fit-content; }
 
 .whole {
   width: 100%;
@@ -190,10 +199,11 @@ body {
 .artifact {
   background-color: white;
   border: none;
-  width: 70%;
+  width: 80%;
   height: fit-content;
   border-radius: 20px;
-  box-shadow: 0px 0px 10px 0px #bfbfbf; }
+  box-shadow: 0px 0px 10px 0px #bfbfbf;
+  margin: auto; }
   .artifact > h1 {
     margin: auto;
     text-align: center;
@@ -207,16 +217,18 @@ body {
     margin: auto; }
     .artifact__content > div {
       width: 50%; }
-    .artifact__content > .text > p {
-      width: 80%;
-      margin: auto;
-      margin-top: 10px;
+    .artifact__content > .text {
       overflow: scroll; }
-    .artifact__content > .text > h3 {
-      margin: auto;
-      text-align: center;
-      font-size: 1.5rem;
-      margin-top: 10px; }
+      .artifact__content > .text > p {
+        width: 85%;
+        margin: auto;
+        margin-top: 10px;
+        font-size: 1.1rem; }
+      .artifact__content > .text > h3 {
+        margin: auto;
+        text-align: center;
+        font-size: 1.5rem;
+        margin-top: 10px; }
     .artifact__content > .img {
       background-size: cover;
       background-position: center;
@@ -242,11 +254,14 @@ body {
         background-color: #329669; }
 
 .course-code {
-  box-shadow: 0px 0px 10px 0px #bfbfbf;
   height: fit-content;
-  width: 20%;
+  width: 30%;
   border-radius: 20px;
-  background-color: white; }
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end; }
   .course-code > h1 {
     text-align: center;
     margin: auto;
@@ -258,7 +273,6 @@ body {
     font-size: 1.1rem;
     display: block;
     margin: auto;
-    margin-top: 10px;
     text-align: center; }
     .course-code > input:focus {
       outline: none;
@@ -278,3 +292,20 @@ body {
     .course-code > button:hover {
       cursor: pointer;
       background-color: #3a3a3a; }
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  align-content: center; }
+  .header > a {
+    text-decoration: none;
+    display: block;
+    background-color: black;
+    font-size: 1rem;
+    padding: 10px 20px;
+    margin-left: 30px;
+    color: white;
+    border-radius: 10px; }

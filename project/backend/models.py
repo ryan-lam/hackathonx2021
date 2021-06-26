@@ -25,11 +25,18 @@ class Item(models.Model):
 
 class Course(models.Model):
     code = models.CharField(max_length=7, unique=True)
-    item = models.ManyToManyField(Item, related_name='courses')
+    items = models.ManyToManyField(Item, related_name='courses', through='Sequence')
 
     def __str__(self):
-        items = '\n'.join([str(item) for item in self.item.all()])
-        return f'Code: {self.code} \n, {items}'
+        # items = '\n'.join([str(item) for item in self.item.all()])
+        return f'Code: {self.code} \n'
 
+class Sequence(models.Model):
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    index = models.IntegerField()
+
+    def __str__(self):
+        return f'Course: {self.course.code}, Order: {self.order}, Item: {self.item.name}'
 
 

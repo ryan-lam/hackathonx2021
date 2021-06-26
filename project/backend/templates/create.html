@@ -5,10 +5,10 @@
         <link rel="stylesheet" href="../static/style.css" type="text/css">
     </head>
     <body class="createbody">
-        <a  class="back-button" style="" href="../">BACK</a>
-        <h1 style="text-align: center; padding-top: 20px; width: 75%; margin: auto;">Pick the artifacts that you would like to show your students</h1>
-
-        <form action="" class="create__form">
+        <a class="back-button" style="" href="../">Back to Home</a>
+        <h1 class="message" style="text-align: center; padding-top: 20px; width: 75%; margin: auto;">Pick the artifacts that you would like to show your students</h1>
+        <div style="height: 20px;"></div>
+        <form action="" class="create__form" method="POST">
             {% csrf_token %}
             <main class="create">
                 {% for item in items %}
@@ -23,12 +23,14 @@
                 {% endfor %}
             </main>
             <input type="text" name="array" class="selected-artifacts" style="width: 100%; display: none;">
-            <div style="height: 30px;"></div>
-            <button type="submit">Generate Code</button>
+            <div style="height: 20px;"></div>
+            <button type="submit" class="generate">Generate Code</button>
+            
 
-            <p>{{ code }}</p>
+            <p class="generated-code" style="user-select: none;">{{ code }}<img src="https://img.icons8.com/material-outlined/24/000000/copy.png" class="copy"/></p>
             <div style="height: 30px;"></div>
         </form>
+        
         
         <script>
             const artif = document.querySelectorAll(".create__inside");
@@ -36,6 +38,7 @@
             let artifactsSelected = []
             const liststore = document.querySelector(".selected-artifacts");
 
+            
 
             for(let i = 0; i < artif.length; i++){
                 artif[i].setAttribute("selected", "false");
@@ -62,6 +65,48 @@
                     
                 });
             }
+
+            const copybutton = document.querySelector(".copy");
+            const element = document.querySelector(".generated-code");
+            console.log("This is " + element.textContent + "!");
+            element.addEventListener("click", (e) => {
+                // code.select();
+                // // code.setSelectionRange(0, 99999)
+                // document.execCommand("copy");
+
+                var range, selection, worked;
+
+                if (document.body.createTextRange) {
+                    range = document.body.createTextRange();
+                    range.moveToElementText(element);
+                    range.select();
+                } else if (window.getSelection) {
+                    selection = window.getSelection();        
+                    range = document.createRange();
+                    range.selectNodeContents(element);
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                }
+                
+                try {
+                    document.execCommand('copy');
+                }
+                catch (err) {
+                    alert('unable to copy text');
+                }
+            });
+            const generate = document.querySelector(".generate");
+            const message = document.querySelector(".message");
+
+            if(element.textContent != ""){
+                generate.remove();
+                message.textContent = "Copy the code below to show your course to your students!";
+            }
+            
+            // generate.addEventListener("click", (e) => {
+            //     generate.style.display = "none";
+            // });
+
         </script>
     </body>
 </html>

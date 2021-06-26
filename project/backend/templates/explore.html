@@ -3,48 +3,62 @@
     <header>
         
         <link rel="stylesheet" href="../static/style.css" type="text/css">
+
+
+        <style>
+            .title{
+                position: absolute;
+                margin: auto;
+                text-align: center;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                
+            }
+        </style>
     </header>
     <body style="position: relative;">
         <!-- <img src="{{ item.img.url }}">
         <h1>{{ item.name }}</h1>
         <h4>{{ item.category }}</h4>
         <p>{{ item.description | linebreaksbr }}</p> -->
-        <a  class="back-button" style="" href="../">BACK</a>
-        <div style="height: 20px;"></div>
-        <h1 style="margin: auto; text-align: center; font-size: 3rem;">EXPLORE</h1>
-        <div style="height: 20px;"></div>
-
-        <div class="whole">
-            <main class="artifact">
-                <h1>{{ item.name }} - {{ item.category }}</h1>
-                <div style="height: 20px;"></div>
-                <div class="artifact__content">
-                    <div style="background-image: url({{ item.img.url }});" class="img"></div>
-                    <div class="text">
-                        <h3>Description</h3>
-                        <p>{{ item.description | linebreaksbr }}</p>
-                    </div>
-                </div>
-                <div style="height: 20px;"></div>
-                <div class="artifact__buttons">
-                    <button>Save</button>
-                    <button>Next</button>
-                </div>
-                <div style="height: 20px;"></div>
-            </main>
-
-            <section class="course-code">
-                <h1>Enter Course Code</h1>
-                <input type="text" name="code" placeholder="Enter Code">
-
-                <button>Get Course</button>
-            </section>
-
+        <h1 style="margin: auto; text-align: center; font-size: 3rem;" class="title">EXPLORE</h1>
+        <header class="header">
+            <a style="" href="../">BACK</a>
             
+            <div class="course-code">
 
-        </div>
+                <input type="text" name="code" placeholder="Enter Course Code">
+    
+                <button>Get Course</button>
+            </div>
+        </header>
         
+        <div style="height: 30px;"></div>
+        
+        <!-- <section class="course-code">
 
+            <input type="text" name="code" placeholder="Enter Course Code">
 
+            <button>Get Course</button>
+        </section>
+         -->
+        <main class="artifact">
+            <h1>{{ item.name }} - {{ item.category }}</h1>
+            <div style="height: 20px;"></div>
+            <div class="artifact__content">
+                <div style="background-image: url({{ item.img.url }});" class="img"></div>
+                <div class="text">
+                    <h3>Description</h3>
+                    <p>{{ item.description | linebreaksbr }}</p>
+                </div>
+            </div>
+            <div style="height: 20px;"></div>
+            <div class="artifact__buttons">
+                <button>Save</button>
+                <button>Next</button>
+            </div>
+            <div style="height: 20px;"></div>
+        </main>
     </body>
 </html>
