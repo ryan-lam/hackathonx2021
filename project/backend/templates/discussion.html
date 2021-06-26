@@ -1,16 +1,45 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
-    <header>
-        <h1>Discussion</h1>
-    </header>
-    <br>
+    <head>
+        <link rel="stylesheet" href="../static/style.css">
+        <h1 class="title-discussion">Discussion Forum</h1>
+        <style>
+            .title-discussion{
+                text-align: center;
+                margin: auto;
+                font-size: 2.5rem;
+                padding: 20px 0px;
+            }
+            p{
+                font-size: 2rem;
+            }
+        </style>
+    </head>
     <body>
-        <div>
+        <!-- <div>
             <img src="{{ item.img.url }}">
             <h1>{{ item.name }}</h1>
             <h4>{{ item.category }}</h4>
             <p>{{ item.description | linebreaksbr }}</p>
-        </div>
+        </div> -->
+
+        <main class="artifact" style="height: 60%;">
+            <h1>{{ item.name }} - {{ item.category }}</h1>
+            <div style="height: 20px;"></div>
+            <div class="artifact__content">
+                <div style="background-image: url({{ item.img.url }});" class="img"></div>
+                <div class="text">
+                    <h3>Description</h3>
+                    <p>{{ item.description | linebreaksbr }}</p>
+                </div>
+            </div>
+            <div style="height: 20px;"></div>
+            <!-- <div class="artifact__buttons">
+                <button>Save</button>
+                <button>Next</button>
+            </div> -->
+            <!-- <div style="height: 10px;"></div> -->
+        </main>
 
         <h1>----------------------------------------------</h1>
         <h1>POSTS</h1>
@@ -19,7 +48,15 @@
             <h4>{{ item.user.name }} — {{ item.time }}</h4>
             <p>{{ item.post }}</p>
         {% endfor %}
-        
+
+        <p>HIIIIIIIIIII</p>
+        <p>HIIIIIIIIIII</p>
+        <p>HIIIIIIIIIII</p>
+        <p>HIIIIIIIIIII</p>
+        <p>HIIIIIIIIIII</p>
+        <p>HIIIIIIIIIII</p>
+        <p>HIIIIIIIIIII</p>
+        <p>HIIIIIIIIIII</p>
     </body>
 </html>
 
