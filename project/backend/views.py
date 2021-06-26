@@ -77,6 +77,7 @@ def login(request):
             data = dict(request.POST)
             user = User.objects.get(username=request.POST["username"])
             if request.POST["password"] == user.password:
+                request.session["username"] = request.POST["username"]
                 data.update({"loginSuccess": True})
                 return render(request, 'test.html', data)
         except User.DoesNotExist:
@@ -94,6 +95,7 @@ def signup(request):
                         name=request.POST["name"])
             user.save()
             data.update({"signupSuccess": True})
+            request.session["username"] = request.POST["username"]
             return render(request, 'test.html', data)
         except IntegrityError:
             data.update({"signupSuccess": False})
@@ -106,7 +108,9 @@ def signup(request):
 
 
 
-
+def clear(request):
+    request.session.flush()
+    return HttpResponseRedirect(reverse("index"))
 
 ####### TESTING ################################################
 def test_image(request, pk): # TESTING SINGLE IMGS
