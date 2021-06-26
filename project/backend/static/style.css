@@ -101,7 +101,7 @@ body {
         border: solid 1px #42b983; }
     .prompt > div > button {
       margin-top: 25px;
-      background-color: #42b983;
+      background-color: black;
       color: white;
       border: none;
       padding: 10px 20px;
@@ -109,7 +109,7 @@ body {
       border-radius: 10px; }
       .prompt > div > button:hover {
         cursor: pointer;
-        background-color: #329669; }
+        background-color: black; }
   .prompt > h1 {
     text-align: center; }
 
@@ -335,7 +335,7 @@ body {
     margin-left: 15px; }
   .discussion__text {
     flex: 1;
-    padding: 10px 50px 10px 25px; }
+    padding: 20px 50px 20px 25px; }
     .discussion__text > header {
       display: flex;
       flex-direction: row;
@@ -349,3 +349,21 @@ body {
     .discussion__text > p {
       font-size: 1.2rem;
       padding: 10px 0px; }
+    .discussion__text > button {
+      display: block;
+      font-size: 1.3rem;
+      padding: 4px 20px;
+      background-color: #42b983;
+      color: white;
+      float: right;
+      border: none;
+      border-radius: 10px;
+      margin-top: 10px; }
+      .discussion__text > button:hover {
+        cursor: pointer; }
+    .discussion__text > textarea {
+      display: block;
+      width: 100%;
+      resize: vertical;
+      padding: 10px 20px;
+      margin-top: 10px; }
