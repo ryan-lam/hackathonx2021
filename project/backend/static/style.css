@@ -163,4 +163,118 @@ body {
   text-align: center;
   margin-top: 20px;
   width: 300px;
-  background-color: gainsboro; }
+  background-color: gainsboro;
+  color: black; }
+
+.back-button {
+  position: absolute;
+  background-color: black;
+  color: white;
+  width: 100px;
+  height: fit-content;
+  border: none;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 15px;
+  margin-left: 15px; }
+
+.whole {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly; }
+
+.artifact {
+  background-color: white;
+  border: none;
+  width: 70%;
+  height: fit-content;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px 0px #bfbfbf; }
+  .artifact > h1 {
+    margin: auto;
+    text-align: center;
+    padding-top: 20px; }
+  .artifact__content {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    height: 300px;
+    margin: auto; }
+    .artifact__content > div {
+      width: 50%; }
+    .artifact__content > .text > p {
+      width: 80%;
+      margin: auto;
+      margin-top: 10px;
+      overflow: scroll; }
+    .artifact__content > .text > h3 {
+      margin: auto;
+      text-align: center;
+      font-size: 1.5rem;
+      margin-top: 10px; }
+    .artifact__content > .img {
+      background-size: cover;
+      background-position: center;
+      border: solid 3px black; }
+  .artifact__buttons {
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    user-select: none; }
+    .artifact__buttons > button {
+      width: 40%;
+      background-color: #42b983;
+      font-size: 2rem;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      color: white; }
+      .artifact__buttons > button:hover {
+        cursor: pointer;
+        background-color: #329669; }
+
+.course-code {
+  box-shadow: 0px 0px 10px 0px #bfbfbf;
+  height: fit-content;
+  width: 20%;
+  border-radius: 20px;
+  background-color: white; }
+  .course-code > h1 {
+    text-align: center;
+    margin: auto;
+    padding-top: 20px; }
+  .course-code > input {
+    border: none;
+    border-bottom: solid 2px black;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    text-align: center; }
+    .course-code > input:focus {
+      outline: none;
+      border-bottom: solid 2px #bfbfbf; }
+  .course-code > button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    font-size: 1rem;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px; }
+    .course-code > button:hover {
+      cursor: pointer;
+      background-color: #3a3a3a; }
