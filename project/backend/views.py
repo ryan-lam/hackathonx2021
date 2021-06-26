@@ -33,25 +33,38 @@ def create(request):
         return render(request, "create.html", data)
 
 def explore(request):
-    random_id = random.randint(2, Item.objects.count())
-    item = Item.objects.get(id=random_id)
-    print(item)
-    return render(request, "explore.html", {
-        "item":item
+    if request.method == 'GET':
+        random_id = random.randint(2, Item.objects.count())
+        item = Item.objects.get(id=random_id)
+        print(item)
+        return render(request, "explore.html", {
+            "item":item
+        })
+    elif request.method == 'POST':
+        return HttpResponseRedirect(reverse('course', args=[request.POST["code"]]))
+
+
+def course(request, code, index=0):
+    course = Course.objects.get(code=code)
+    try:
+        sequence = Sequence.objects.get(course=course, index=index)
+        index+=1
+        print(sequence.item)
+        return render(request, "course.html", {
+            "item":sequence.item, "code":code, "next_index":index
+            })
+    except:
+        return HttpResponseRedirect(reverse('index'))
+
+def discussion(request, item_pk=2):
+    # DISCUSSION POST ITEM_PK MUST BE GREATER THAN 1
+    dps = DiscussionPost.objects.filter(item=item_pk)
+    item = Item.objects.get(id=item_pk)
+    return render(request, "discussion.html", {
+        "posts":dps, "item":item
     })
 
-def load(request, code):
-    course = Course.objects.get(code=code)
-    sequences = Sequence.objects.filter(course=course)
-    items = [sequence.item.name for sequence in sequences]
-    print(items)
-    return render(request, "index.html")
 
-def getCourseItem(request, code, index):
-    course = Course.objects.get(code=code)
-    sequence = Sequence.objects.get(course=course, index=index)
-    print(sequence.item)
-    return render(request, "index.html", {"item": sequence.item})
 
 
 

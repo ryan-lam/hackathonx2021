@@ -31,12 +31,21 @@ class Course(models.Model):
         # items = '\n'.join([str(item) for item in self.item.all()])
         return f'Code: {self.code} \n'
 
+
 class Sequence(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     index = models.IntegerField()
 
     def __str__(self):
-        return f'Course: {self.course.code}, Order: {self.order}, Item: {self.item.name}'
+        return f'Course: {self.course.code}, index: {self.index}, Item: {self.item.name}'
 
 
+class DiscussionPost(models.Model):
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    time = models.DateTimeField(auto_now=True)
+    post = models.TextField(null=True, blank=True)
+
+
+    

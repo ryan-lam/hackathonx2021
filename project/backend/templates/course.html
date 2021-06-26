@@ -1,0 +1,15 @@
+<!DOCTYPE>
+<html>
+    <header>
+        <h1>EXPLORE</h1>
+    </header>
+    <a href="{% url 'course' code=code index=next_index %}" class="button"><h2>NEXT ITEM</h2></a>
+    <br>
+    <body>
+        <img src="{{ item.img.url }}">
+        <h1>{{ item.name }}</h1>
+        <h4>{{ item.category }}</h4>
+        <p>{{ item.description | linebreaksbr }}</p>
+    </body>
+</html>
+
