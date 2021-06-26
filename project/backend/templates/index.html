@@ -4,13 +4,88 @@
         <title>TINDER</title>
         <link rel="stylesheet" href="./style.css" type="text/css">
     </head>
-    <body>
-        <h1 class="index__title">Tinder</h1>
-        <p class="index__desc">Tinder allows students to hookup with teachers</p>
 
-        <section class="front">
-            <a href="">I'm a Student</a>
-            <a href="">I'm a Teacher</a>
-        </section>
+    <body style="background-color: #ffe2e0;">
+
+        <main class="index">
+
+            <section>
+                <h1 class="index__title">Tinder</h1>
+                <p class="index__desc">Tinder allows students to hookup with teachers</p>
+
+                <div style="height: 50px;"></div>
+
+                <section class="front">
+                    <a class="front__student">I'm a Student</a>
+                    <a class="front__teacher" href="./create.html">I'm a Teacher</a>
+                </section>
+            </section>
+            
+        </main>
+        
+        <div class="shadow"></div>
+
+        <form class="login prompt">
+            <h1>Log In</h1>
+            <div>
+                <label for="username">Username</label>
+                <input type="text" name="username" required>
+                <div style="height: 10px"></div>
+                <label for="email">Password</label>
+                <input type="password" name="password" required>
+                <button type="submit">Log In</button>
+                <button class="signup-nav">Sign up</button>
+            </div>
+        </form>
+
+        <form class="signup prompt">
+            <h1>Sign Up</h1>
+            <div>
+                <label for="username">Name</label>
+                <input type="text" name="name" required>
+                <div style="height: 10px"></div>
+                <label for="username">Username</label>
+                <input type="text" name="username" required>
+                <div style="height: 10px"></div>
+                <label for="email">Password</label>
+                <input type="password" name="password" required>
+                <button type="submit">Sign up</button>
+                <button class="login-nav">Log In</button>
+            </div>
+        </form>
+
+        <script>
+            const studentbutton = document.querySelector(".front__student");
+            const shadow = document.querySelector(".shadow");
+            const loginForm = document.querySelector(".login");
+            const singupform = document.querySelector(".signup");
+
+            const signupNav = document.querySelector(".signup-nav");
+            const loginNav = document.querySelector(".login-nav");
+
+            shadow.addEventListener("click", (e) => {
+                console.log("CLOSEE")
+                shadow.style.display = "none";
+                loginForm.style.display = "none";
+                singupform.style.display = "none";
+
+            });
+
+            studentbutton.addEventListener("click", (e) => {
+                shadow.style.display = "initial";
+                loginForm.style.display = "initial";
+                console.log("HII");
+            });
+
+            signupNav.addEventListener("click", (e) => {
+                singupform.style.display = "initial";
+                loginForm.style.display = "none";
+            });
+
+            loginNav.addEventListener("click", (e) => {
+                loginForm.style.display = "initial";
+                singupform.style.display = "none";
+            });
+        </script>
     </body>
 </html>
