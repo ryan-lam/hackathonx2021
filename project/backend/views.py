@@ -40,11 +40,11 @@ def explore(request):
         "item":item
     })
 
-def course(request, code, index):
+def course(request, code, index=0):
     course = Course.objects.get(code=code)
     try:
-        index+=1
         sequence = Sequence.objects.get(course=course, index=index)
+        index+=1
         print(sequence.item)
         return render(request, "course.html", {
             "item":sequence.item, "code":code, "next_index":index
