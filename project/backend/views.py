@@ -66,11 +66,33 @@ def discussion(request, item_pk=2):
     if request.method == 'GET':
         dps = DiscussionPost.objects.filter(item=item_pk)
         item = Item.objects.get(id=item_pk)
-        loggedIn = True if "username" in request.session else False
-        print(loggedIn)
-        return render(request, "discussion.html", {
-            "posts":dps, "item":item, "loggedIn": loggedIn
-        })
+        data = {"posts":dps, "item":item, "loggedIn": False}
+        if "username" in request.session:
+            loggedIn = True
+            user = User.objects.get(username=request.session["username"])
+            data.update({"loggedIn": loggedIn, "user": user})
+        return render(request, "discussion.html", data)
+    elif request.method == 'POST':
+        if request.POST['type'] == 'li':
+            try:
+                user = User.objects.get(username=request.POST["username"])
+                if request.POST["password"] == user.password:
+                    request.session["username"] = request.POST["username"]
+                    print('success')
+            except User.DoesNotExist:
+                print('user does not exist')
+        elif request.POST['type'] == 'su':
+            try:
+                user = User(username=request.POST["username"], 
+                            password=request.POST["password"],
+                            name=request.POST["name"])
+                user.save()
+                request.session["username"] = request.POST["username"]
+            except IntegrityError:
+                print('duplicate user')
+        return HttpResponseRedirect(reverse('discussion', args=[item_pk]))
+
+
 
 def login(request):
     if request.method == 'GET':

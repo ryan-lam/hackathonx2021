@@ -68,18 +68,17 @@
         <h3 style="font-size: 1.5rem; text-align: center; margin:auto;">Write a post and join the discussion</h3>
         <div style="height: 20px;"></div>
 
-        <form class="discussion">
+        <form class="discussion" method="POST">
+            {% csrf_token %}
+            <input type="text" style="display: none;" name="type" value="po">
             <img src="../static/images/usericon.png" alt="">
             <div class="discussion__text">
                 <header>
-                    <h3>JAX</h3>
+                    <h3>{{ user.name }}</h3>
                 </header>
                 <textarea id="textarea" name="textarea" rows="4" cols="50"></textarea>
-                <button>Post</button>
-                
+                <button type="submit">Post</button>
             </div>
-          
-            
         </form>
         <div style="height: 40px;"></div>
         
@@ -100,7 +99,8 @@
         
         <div class="shadow"></div>
         <!-- LOGIN FORM -->
-        <form class="login prompt" action="">
+        <form class="login prompt" method="POST">
+            {% csrf_token %}
             <h1>Log In</h1>
             <div>
                 <input type="text" style="display: none;" name="type" value="li">
@@ -115,7 +115,8 @@
         </form>
 
         <!-- SIGNUP FORM -->
-        <form class="signup prompt">
+        <form class="signup prompt" method="POST">
+            {% csrf_token %}
             <h1>Sign Up</h1>
             <div>
                 <input type="text" style="display: none;" name="type" value="su">
