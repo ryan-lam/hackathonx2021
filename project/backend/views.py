@@ -21,8 +21,6 @@ def create(request):
 
 
 
-
-
 ####### TESTING ################################################
 def test_image(request, pk): # TESTING SINGLE IMGS
     item = Item.objects.get(pk=pk)
