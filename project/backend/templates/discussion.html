@@ -13,6 +13,30 @@
             p{
                 font-size: 2rem;
             }
+
+            .back-discuss{
+                position: absolute; 
+                background-color: black; 
+                color: white; 
+                width: 100px; 
+                height: fit-content; 
+                border: none; 
+                display: block; 
+                text-decoration: none; 
+                text-align: center; 
+                padding: 10px 20px; 
+                border-radius: 10px;
+                margin-top: 15px;
+                margin-left: 15px;
+                top: 5px;
+                right: 10px;
+                width: fit-content;
+
+
+            }
+            .back-discuss:hover{
+                cursor: pointer;
+            }
         </style>
     </head>
     <body>
@@ -22,8 +46,9 @@
             <h4>{{ item.category }}</h4>
             <p>{{ item.description | linebreaksbr }}</p>
         </div> -->
-
-        <main class="artifact" style="height: 60%;">
+        <a class="back-button" style="" href="../" onclick="backButton()">Back to Explore</a>
+        <a class="back-discuss">Login</a>
+        <main class="artifact" style="height: 50%; width: 800px;">
             <h1>{{ item.name }} - {{ item.category }}</h1>
             <div style="height: 20px;"></div>
             <div class="artifact__content">
@@ -41,22 +66,93 @@
             <!-- <div style="height: 10px;"></div> -->
         </main>
 
-        <h1>----------------------------------------------</h1>
-        <h1>POSTS</h1>
+        <div style="height: 30px;"></div>
+        <h1 style="text-align: center; margin: auto;font-size: 2.5rem; padding: 20px 0px;">POSTS</h1>
 
         {% for item in posts %}
-            <h4>{{ item.user.name }} — {{ item.time }}</h4>
-            <p>{{ item.post }}</p>
+            <section class="discussion">
+                <img src="../static/images/usericon.png" alt="">
+                <div class="discussion__text">
+                    <header>
+                        <h3>{{ item.user.name }}</h3>
+                        <h4>{{ item.time }}</h4>
+                    </header>
+                    <p>{{ item.post }}</p>
+                </div>
+            </section>
         {% endfor %}
+        
+        <div class="shadow"></div>
+        <!-- LOGIN FORM -->
+        <form class="login prompt" action="">
+            <h1>Log In</h1>
+            <div>
+                <input type="text" style="display: none;" name="type" value="li">
+                <label for="username">Username</label>
+                <input type="text" name="username" required>
+                <div style="height: 10px"></div>
+                <label for="email">Password</label>
+                <input type="password" name="password" required>
+                <button type="submit">Log In</button>
+                <button class="signup-nav">Sign up</button>
+            </div>
+        </form>
 
-        <p>HIIIIIIIIIII</p>
-        <p>HIIIIIIIIIII</p>
-        <p>HIIIIIIIIIII</p>
-        <p>HIIIIIIIIIII</p>
-        <p>HIIIIIIIIIII</p>
-        <p>HIIIIIIIIIII</p>
-        <p>HIIIIIIIIIII</p>
-        <p>HIIIIIIIIIII</p>
+        <!-- SIGNUP FORM -->
+        <form class="signup prompt" action="{% url '' %}">
+            <h1>Sign Up</h1>
+            <div>
+                <input type="text" style="display: none;" name="type" value="su">
+                <label for="username">Name</label>
+                <input type="text" name="name" required>
+                <div style="height: 10px"></div>
+                <label for="username">Username</label>
+                <input type="text" name="username" required>
+                <div style="height: 10px"></div>
+                <label for="email">Password</label>
+                <input type="password" name="password" required>
+                <button type="submit">Sign up</button>
+                <button class="login-nav">Log In</button>
+            </div>
+        </form>
+        <div style="height: 50px;"></div>
+        <script>
+            function backButton(){
+                window.history.back();
+            }
+
+            const loginButton = document.querySelector(".back-discuss");
+            const shadow = document.querySelector(".shadow");
+            const loginForm = document.querySelector(".login");
+            const singupform = document.querySelector(".signup");
+
+            const signupNav = document.querySelector(".signup-nav");
+            const loginNav = document.querySelector(".login-nav");
+
+            shadow.addEventListener("click", (e) => {
+                console.log("CLOSEE")
+                shadow.style.display = "none";
+                loginForm.style.display = "none";
+                singupform.style.display = "none";
+
+            });
+
+            loginButton.addEventListener("click", (e) => {
+                shadow.style.display = "initial";
+                loginForm.style.display = "initial";
+                console.log("HII");
+            });
+
+            signupNav.addEventListener("click", (e) => {
+                singupform.style.display = "initial";
+                loginForm.style.display = "none";
+            });
+
+            loginNav.addEventListener("click", (e) => {
+                loginForm.style.display = "initial";
+                singupform.style.display = "none";
+            });
+        </script>
     </body>
 </html>
 

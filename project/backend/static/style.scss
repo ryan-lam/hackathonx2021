@@ -506,3 +506,52 @@ body{
 
 //////////////////DISCUSSION HTML PAGE////////////////////
 
+.discussion{
+    width: 75%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    box-shadow: 0px 0px 10px 0px #bfbfbf;
+    border-radius: 30px;
+    
+
+    & > img{
+        height: 80px;
+        width: 80px;
+
+        margin-top: 10px;
+        margin-left: 15px;
+    }
+
+    &__text{
+        // background-color: aqua;
+        flex: 1;
+        padding: 10px 50px 10px 25px;
+        
+
+        & > header{
+            // background-color: red;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: baseline;
+
+            & > h3{
+                font-size: 1.5rem;
+            }
+
+            & > h4{
+                font-weight: 200;
+                font-size: 1rem;
+            }
+        }
+
+        & > p{
+            font-size: 1.2rem;
+            padding: 10px 0px;
+            
+        }
+    }
+
+}

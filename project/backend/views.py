@@ -66,6 +66,7 @@ def discussion(request, item_pk=2):
     return render(request, "discussion.html", {
         "posts":dps, "item":item
     })
+    
 
 
 

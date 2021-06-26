@@ -319,3 +319,33 @@ body {
     .footer > a:hover {
       background-color: #3a3a3a;
       cursor: pointer; }
+
+.discussion {
+  width: 75%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  box-shadow: 0px 0px 10px 0px #bfbfbf;
+  border-radius: 30px; }
+  .discussion > img {
+    height: 80px;
+    width: 80px;
+    margin-top: 10px;
+    margin-left: 15px; }
+  .discussion__text {
+    flex: 1;
+    padding: 10px 50px 10px 25px; }
+    .discussion__text > header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline; }
+      .discussion__text > header > h3 {
+        font-size: 1.5rem; }
+      .discussion__text > header > h4 {
+        font-weight: 200;
+        font-size: 1rem; }
+    .discussion__text > p {
+      font-size: 1.2rem;
+      padding: 10px 0px; }
