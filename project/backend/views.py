@@ -56,9 +56,13 @@ def course(request, code, index=0):
     except:
         return HttpResponseRedirect(reverse('index'))
 
-def discussion(request, item_pk):
+def discussion(request, item_pk=2):
+    # DISCUSSION POST ITEM_PK MUST BE GREATER THAN 1
     dps = DiscussionPost.objects.filter(item=item_pk)
-    return render(request, "discussion.html", dps)
+    item = Item.objects.get(id=item_pk)
+    return render(request, "discussion.html", {
+        "posts":dps, "item":item
+    })
 
 
 
