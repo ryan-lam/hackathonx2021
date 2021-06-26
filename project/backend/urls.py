@@ -12,7 +12,7 @@ urlpatterns = [
     path('course/<str:code>/<int:index>', views.course, name="course"),
     path('course/<str:code>', views.course, name="course"),
 
-    path('discussion/<str:item>', views.discussion, name="discussion"),
+    path('discussion/<str:item_pk>', views.discussion, name="discussion"),
 
     ####### TESTING ######################## 
     path('img/<int:pk>', views.test_image),

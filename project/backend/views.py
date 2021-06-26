@@ -56,9 +56,9 @@ def course(request, code, index=0):
     except:
         return HttpResponseRedirect(reverse('index'))
 
-def forum(request, item_pk):
+def discussion(request, item_pk):
     dps = DiscussionPost.objects.filter(item=item_pk)
-    return render(request, "forum.html", dps)
+    return render(request, "discussion.html", dps)
 
 
 
