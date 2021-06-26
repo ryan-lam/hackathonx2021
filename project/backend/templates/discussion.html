@@ -29,7 +29,7 @@
                 margin-top: 15px;
                 margin-left: 15px;
                 top: 5px;
-                right: 10px;
+                right: 50px;
                 width: fit-content;
 
 
@@ -46,7 +46,7 @@
             <h4>{{ item.category }}</h4>
             <p>{{ item.description | linebreaksbr }}</p>
         </div> -->
-        <a class="back-button" style="" href="../" onclick="backButton()">Back to Explore</a>
+        <a class="back-button" style="" href="../../explore">Back to Explore</a>
         <a class="back-discuss">Login</a>
         <main class="artifact" style="height: 50%; width: 800px;">
             <h1>{{ item.name }} - {{ item.category }}</h1>
@@ -82,7 +82,7 @@
         </form>
         <div style="height: 40px;"></div>
         
-        <div style="display: flex; flex-direction: column-reverse;">
+        <!-- <div style="display: flex; flex-direction: column-reverse;"> -->
         {% for item in posts %}
             <section class="discussion">
                 <img src="../static/images/usericon.png" alt="">
@@ -96,7 +96,7 @@
             </section>
             <div style="height: 40px;"></div>
         {% endfor %}
-        </div>
+        
         
         <div class="shadow"></div>
         <!-- LOGIN FORM -->
@@ -110,8 +110,8 @@
                 <div style="height: 10px"></div>
                 <label for="email">Password</label>
                 <input type="password" name="password" required>
-                <button type="submit">Log In</button>
-                <button class="signup-nav">Sign up</button>
+                <button type="submit" class="actual">Log In</button>
+                <button class="signup-nav redirect">Go to Sign up</button>
             </div>
         </form>
 
@@ -129,8 +129,8 @@
                 <div style="height: 10px"></div>
                 <label for="email">Password</label>
                 <input type="password" name="password" required>
-                <button type="submit">Sign up</button>
-                <button class="login-nav">Log In</button>
+                <button type="submit" class="actual">Sign up</button>
+                <button class="login-nav redirect">Go to Log In</button>
             </div>
         </form>
         <div style="height: 50px;"></div>
