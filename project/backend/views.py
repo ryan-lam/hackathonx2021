@@ -33,12 +33,16 @@ def create(request):
         return render(request, "create.html", data)
 
 def explore(request):
-    random_id = random.randint(2, Item.objects.count())
-    item = Item.objects.get(id=random_id)
-    print(item)
-    return render(request, "explore.html", {
-        "item":item
-    })
+    if request.method == 'GET':
+        random_id = random.randint(2, Item.objects.count())
+        item = Item.objects.get(id=random_id)
+        print(item)
+        return render(request, "explore.html", {
+            "item":item
+        })
+    elif request.method == 'POST':
+        return HttpResponseRedirect(reverse('course', args=[request.POST["code"]]))
+
 
 def course(request, code, index=0):
     course = Course.objects.get(code=code)
@@ -51,6 +55,11 @@ def course(request, code, index=0):
             })
     except:
         return HttpResponseRedirect(reverse('index'))
+
+def forum(request, item_pk):
+    dps = DiscussionPost.objects.filter(item=item_pk)
+    return render(request, "forum.html", dps)
+
 
 
 
