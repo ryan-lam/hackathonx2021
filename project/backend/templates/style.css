@@ -1,0 +1,129 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+body, html {
+  width: 100vw;
+  height: 100%; }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative; }
+
+.index {
+  background-color: #ffe2e0;
+  position: relative;
+  z-index: 0;
+  top: 0;
+  height: 100%; }
+  .index > section {
+    position: relative;
+    top: 40%;
+    transform: translateY(-50%);
+    height: fit-content; }
+  .index__title {
+    font-weight: 800;
+    text-align: center;
+    margin: auto;
+    font-size: 5rem; }
+  .index__desc {
+    text-align: center;
+    margin: auto;
+    font-weight: 200;
+    font-size: 1.5rem; }
+
+.front {
+  display: flex;
+  width: 40%;
+  margin: auto;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  text-decoration: none;
+  height: fit-content; }
+  .front > a {
+    border-radius: 20px;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    font-weight: 300;
+    transition: all .2s; }
+    .front > a:hover {
+      cursor: pointer;
+      transform: scale(1.1); }
+  .front__student {
+    background-color: crimson;
+    text-decoration: none;
+    color: white; }
+  .front__teacher {
+    background-color: white;
+    color: red;
+    text-decoration: none; }
+
+.shadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  top: 0;
+  display: none; }
+
+.prompt {
+  border-radius: 10px;
+  background-color: white;
+  width: clamp(300px, 25%, 30%);
+  height: fit-content;
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  padding-top: 20px;
+  padding-bottom: 20px; }
+  .prompt > div {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; }
+    .prompt > div > label {
+      text-align: left; }
+    .prompt > div > input {
+      padding: 10px 15px;
+      border-radius: 10px;
+      border: solid 1px #bfbfbf;
+      font-size: 1rem;
+      outline: none;
+      transition: all .3s; }
+      .prompt > div > input:focus {
+        border: solid 1px #42b983; }
+    .prompt > div > button {
+      margin-top: 25px;
+      background-color: #42b983;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1.4rem;
+      border-radius: 10px; }
+      .prompt > div > button:hover {
+        cursor: pointer;
+        background-color: #329669; }
+  .prompt > h1 {
+    text-align: center; }
+
+.create {
+  display: grid;
+  width: 80%;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: auto;
+  background-color: aqua;
+  column-gap: 10px;
+  row-gap: 10px;
+  margin-top: 20px; }
+  .create > div {
+    height: 100px;
+    text-align: center;
+    background-color: #42b983;
+    border: solid 2px black; }

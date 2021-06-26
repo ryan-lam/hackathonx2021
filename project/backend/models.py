@@ -13,9 +13,10 @@ class User(models.Model):
 
 class Item(models.Model):
     name = models.CharField(max_length=200)
-    category = models.CharField(max_length=200, null=True)
+    category = models.CharField(max_length=200, default="Dinosaurs")
     description = models.CharField(max_length=5000)
-    img_url = models.URLField(null=True)
+    description = models.TextField()
+    img_url = models.URLField(null=True, blank=True)
     img = models.ImageField(null=True, upload_to='images/')
 
     def __str__(self):

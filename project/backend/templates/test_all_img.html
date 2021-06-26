@@ -1,0 +1,15 @@
+<!DOCTYPE>
+<html>
+    <header>
+        <h1>TEST ALL IMG</h1>
+    </header>
+    <body>
+        {% for item in items %}
+        <img src="{{ item.img.url }}">
+        <h2>{{ item.name }} - {{ item.category }}</h2>
+        <p>{{ item.description }}</p>
+        <br>
+        <br>
+        {% endfor %}
+    </body>
+</html>
