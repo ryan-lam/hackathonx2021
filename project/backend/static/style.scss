@@ -182,22 +182,73 @@ body{
     width: 80%;
     grid-template-columns: 1fr 1fr 1fr;
     margin: auto;
-    background-color: aqua;
     column-gap: 10px;
     row-gap: 10px;
     margin-top: 20px;
 
-    & > div{
-        
-        height: 100px;
+    &__inside{
+        height: 200px;  
         text-align: center;
         background-color: #42b983;
         border: solid 2px black;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        
+        &:hover{
+            cursor: pointer;
+
+        }
+
+        &:hover h3{
+            opacity: 1;
+        }
+
+        & > h3{
+            opacity: 0; 
+            font-size: 1.5rem;
+        }
+
+        & > h1{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -45%);
+            font-size: 5rem; 
+            color: red; 
+            display: none;
+        }
     }
 }
 
 .create__form{
-    
+    & > button{
+        background-color: #42b983;
+        border: none;
+        padding: 20px 30px;
+        color: white;
+        font-size: 1.6rem;
+        display: block;
+        margin: auto;
+        border-radius: 20px;
+
+        &:hover{
+            cursor: pointer;
+            
+        }
+    }
+
+    & >p{
+        font-size: 1.5rem;
+        margin: auto;
+        text-align: center;
+        margin-top: 20px;
+        width: 300px;
+        background-color: gainsboro;
+
+    }
 }
+
+
 
 

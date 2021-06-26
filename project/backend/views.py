@@ -9,10 +9,14 @@ from project import settings
 def index(request):
     return render(request, "index.html")
 
-
 def create(request):
-    return render(request, "create.html")
+    items = Item.objects.all()
+    return render(request, "create.html", {
+        "items": items
+    })
 
+def explore(request):
+    return render(request, "explore.html")
 
 
 
@@ -30,8 +34,6 @@ def test_image(request, pk): # TESTING SINGLE IMGS
 
 def test_all_img(request): # TESTING ALL IMGS
     items = Item.objects.all()
-    for i in items:
-        print(i)
     return render(request, "test_all_img.html", {
         "items": items
     })

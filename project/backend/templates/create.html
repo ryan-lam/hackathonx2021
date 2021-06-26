@@ -8,23 +8,58 @@
         <h1 style="text-align: center; padding-top: 20px; width: 75%; margin: auto;">Pick the artifacts that you would like to show your students</h1>
 
         <form action="" class="create__form">
+            {% csrf_token %}
             <main class="create">
-                <div>HELLO</div>
-                <div>HELLO</div>
-                <div>HELLO</div>
-                <div>HELLO</div>
-                <div>HELLO</div>
-                <div>HELLO</div>
-                <div>HELLO</div>
-                <div>HELLO</div>
-                <div>HELLO</div>
-                <div>HELLO</div>
-    
+                {% for item in items %}
+                <div class="create__inside" style="background-image: url({{ item.img.url }});">
+                    <h3 style="background-color: rgba(0,0,0,0.4); color: white;">{{ item.name }} - {{ item.category }}</h3>
+                    <h1>1</h1>
+                
+                    <!-- <img width="300" src="{{ item.img.url }}"> -->
+             
+                    
+                </div>
+                {% endfor %}
             </main>
-    
+            <input type="text" name="array" style="display: none;" class="selected-artifacts">
+            <div style="height: 30px;"></div>
             <button>Generate Code</button>
-            <p></p>
+
+            <p>{{ code }}</p>
+            <div style="height: 30px;"></div>
         </form>
         
+        <script>
+            const artif = document.querySelectorAll(".create__inside");
+            let counter = 1;
+            let artifactsSelected = []
+            const liststore = document.querySelector(".selected-artifacts");
+
+
+            for(let i = 0; i < artif.length; i++){
+                artif[i].setAttribute("selected", "false");
+
+                artif[i].addEventListener("click", (e) => {
+                    if(artif[i].getAttribute("selected") === "false"){
+                        artif[i].style.border = "solid 8px #1ced73";
+                        artif[i].setAttribute("selected", "true");
+                        artif[i].childNodes[3].style.display = "initial"
+                        artif[i].childNodes[3].textContent = counter;
+                        counter++;
+                        console.log(artif[i].childNodes[5].textContent)
+                        artifactsSelected.push(artif[i].childNodes[5].textContent);
+                    } else{
+                        console.log("ELSE")
+                        artif[i].style.border = "solid 2px black";
+                        artif[i].setAttribute("selected", "false");
+                        artif[i].childNodes[3].style.display = "none"
+                        counter--;
+                        artifactsSelected.push(artif[i].childNodes[5].textContent);
+                    }
+                    liststore.textContent = artifactsSelected;
+                    
+                });
+            }
+        </script>
     </body>
 </html>
