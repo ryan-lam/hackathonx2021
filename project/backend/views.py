@@ -5,6 +5,7 @@ from django.urls import reverse
 from .models import *
 from project import settings
 import random, string
+from django.db import IntegrityError
 
 def generate_code():
     return ''.join(random.choice(string.ascii_uppercase + string.digits) for i in range(7))
@@ -68,6 +69,35 @@ def discussion(request, item_pk=2):
         "posts":dps, "item":item
     })
 
+def login(request):
+    if request.method == 'GET':
+        return render(request, 'test.html')
+    elif request.method == 'POST':
+        try:
+            data = dict(request.POST)
+            user = User.objects.get(username=request.POST["username"])
+            if request.POST["password"] == user.password:
+                data.update({"loginSuccess": True})
+                return render(request, 'test.html', data)
+        except User.DoesNotExist:
+            data.update({"loginSuccess": False})
+            return render(request, 'test.html', data)
+
+def signup(request):
+    if request.method == 'GET':
+        return render(request, 'test.html')
+    elif request.method == 'POST':
+        try:
+            data = dict(request.POST)
+            user = User(username=request.POST["username"], 
+                        password=request.POST["password"],
+                        name=request.POST["name"])
+            user.save()
+            data.update({"signupSuccess": True})
+            return render(request, 'test.html', data)
+        except IntegrityError:
+            data.update({"signupSuccess": False})
+            return render(request, 'test.html', data)
 
 
 
