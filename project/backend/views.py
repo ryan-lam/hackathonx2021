@@ -5,12 +5,34 @@ from django.urls import reverse
 from .models import *
 from project import settings
 
-# Create your views here.
+####### VIEWS ################################################
 def index(request):
     return render(request, "index.html")
 
-def test_image(request, pk):
+
+
+
+
+
+
+
+
+
+
+
+
+
+####### TESTING ################################################
+def test_image(request, pk): # TESTING SINGLE IMGS
     item = Item.objects.get(pk=pk)
     print(item)
     # print(item.img.url)
     return render(request, "test.html", {"item": item})
+
+def test_all_img(request): # TESTING ALL IMGS
+    items = Item.objects.all()
+    for i in items:
+        print(i)
+    return render(request, "test_all_img.html", {
+        "items": items
+    })
