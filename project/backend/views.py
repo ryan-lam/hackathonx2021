@@ -14,10 +14,23 @@ def index(request):
     return render(request, "index.html")
 
 def create(request):
-    items = Item.objects.all()
-    return render(request, "create.html", {
-        "items": items
-    })
+    if request.method == "GET":
+        items = Item.objects.all()
+        return render(request, "create.html", {
+            "items": items
+        })
+    elif request.method == 'POST':
+        code = generate_code()
+        names = request.POST['array'].split(',')
+        print(names)
+        items = [Item.objects.get(name=name) for name in names]
+        new_course = Course(code=code)
+        new_course.save()
+        for i, item in enumerate(items):
+            new_course.items.add(item, through_defaults={'order': i})
+        data = dict(request.POST)
+        data.update({"code": code})
+        return render(request, 'create.html', data)
 
 def explore(request):
     random_id = random.randint(2, Item.objects.count())

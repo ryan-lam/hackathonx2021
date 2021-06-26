@@ -7,7 +7,7 @@
     <body class="createbody">
         <h1 style="text-align: center; padding-top: 20px; width: 75%; margin: auto;">Pick the artifacts that you would like to show your students</h1>
 
-        <form action="" class="create__form">
+        <form action="" class="create__form" method="POST">
             {% csrf_token %}
             <main class="create">
                 {% for item in items %}
