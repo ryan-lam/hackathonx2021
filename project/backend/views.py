@@ -146,7 +146,7 @@ def save(request):
             "item":item
         })
     except:
-        print("ERROR")
+        print("Not Logged In")
         return render(request, "index.html")
 
 

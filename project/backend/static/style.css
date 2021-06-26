@@ -316,7 +316,7 @@ body {
   position: absolute;
   bottom: 10px;
   height: fit-content; }
-  .footer > a {
+  .footer > .alink {
     width: 30%;
     display: block;
     text-align: center;
@@ -325,10 +325,14 @@ body {
     text-decoration: none;
     border-radius: 10px;
     padding: 8px 0px;
-    font-size: 1.5rem; }
-    .footer > a:hover {
+    font-size: 1.5rem;
+    border: none; }
+    .footer > .alink:hover {
       background-color: #3a3a3a;
       cursor: pointer; }
+
+.showingPopup {
+  animation: showingSaved 5s linear; }
 
 .discussion {
   width: 75%;

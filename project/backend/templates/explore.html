@@ -15,6 +15,12 @@
                 transform: translateX(-50%);
                 
             }
+
+            @keyframes showingSaved {
+                0%{opacity: 0;}
+                50%{opacity: 100%;}
+                100%{opacity: 0;}
+            }
         </style>
     </head>
     <body style="position: relative;">
@@ -51,11 +57,15 @@
             </div> -->
             <!-- <div style="height: 10px;"></div> -->
         </main>
-        <div class="footer">
-            <a >Save</a>
-            <a href="{% url 'discussion' item_pk=item.id %}">Discussion</a>
-            <a href="">Next</a>
-        </div>
+        <form class="footer" method="POST" action="{% url 'save' %}">
+            {% csrf_token %}
+            <input type="text" style="display: none;" value="{{ item.id }}" name="item_code">
+            <button class="alink" type="submit" onclick="showPopup()">Save</button>
+            <a class="alink" href="{% url 'discussion' item_pk=item.id %}">Discussion</a>
+            <a class="alink" href="">Next</a>
+        </form>
+
+        <h1 style="position: fixed; z-index: 10; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; display: none;" class="popup">Your Item Has Been Saved!</h1>
 
         <script>
             const codetext = document.querySelector(".code-text");
@@ -66,6 +76,21 @@
                 let str = "course/" + codetext.value;
                 formsub.action = str;
             };
+
+            const popup = document.querySelector('.popup');
+            const showPopup = () => {
+                console.log("POPPING UP!");
+                popup.style.WebkitAnimation = "showingSaved 5s linear"; // Code for Chrome, Safari and Opera
+                popup.style.animation = "showingSaved 5s linear";  
+            }
+
+            popup.addEventListener("webkitAnimationStart", () => {
+                popup.style.display = "initial";
+            });
+
+            popup.addEventListener("webkitAnimationEnd", () => {
+                popup.style.display = "none";
+            });
         </script>
     </body>
 </html>
