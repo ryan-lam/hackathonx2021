@@ -63,11 +63,14 @@ def course(request, code, index=0):
 
 def discussion(request, item_pk=2):
     # DISCUSSION POST ITEM_PK MUST BE GREATER THAN 1
-    dps = DiscussionPost.objects.filter(item=item_pk)
-    item = Item.objects.get(id=item_pk)
-    return render(request, "discussion.html", {
-        "posts":dps, "item":item
-    })
+    if request.method == 'GET':
+        dps = DiscussionPost.objects.filter(item=item_pk)
+        item = Item.objects.get(id=item_pk)
+        loggedIn = True if "username" in request.session else False
+        print(loggedIn)
+        return render(request, "discussion.html", {
+            "posts":dps, "item":item, "loggedIn": loggedIn
+        })
 
 def login(request):
     if request.method == 'GET':
