@@ -51,11 +51,10 @@
             </div> -->
             <!-- <div style="height: 10px;"></div> -->
         </main>
-
         <div class="footer">
             <a >Save</a>
-            <a >Discussion</a>
-            <a>Next</a>
+            <a href="{% url 'discussion' item_pk=item.id %}">Discussion</a>
+            <a href="">Next</a>
         </div>
     </body>
 </html>

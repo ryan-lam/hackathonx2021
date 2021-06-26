@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-    <header>
+    <head>
         
-        <link rel="stylesheet" href="../static/style.css" type="text/css">
+        <link rel="stylesheet" href="../../static/style.css" type="text/css">
 
 
         <style>
@@ -16,7 +16,7 @@
                 
             }
         </style>
-    </header>
+    </head>
     <body style="position: relative;">
         <!-- <img src="{{ item.img.url }}">
         <h1>{{ item.name }}</h1>
@@ -26,23 +26,14 @@
         <header class="header">
             <a style="" href="../">BACK</a>
             
-            <div class="course-code">
-
+            <form class="course-code">
                 <input type="text" name="code" placeholder="Enter Course Code">
-    
-                <button>Get Course</button>
-            </div>
+                <button type="submit">Get Course</button>
+            </form>
         </header>
         
-        <div style="height: 30px;"></div>
-        
-        <!-- <section class="course-code">
+        <!-- <div style="height: 20px;"></div> -->
 
-            <input type="text" name="code" placeholder="Enter Course Code">
-
-            <button>Get Course</button>
-        </section>
-         -->
         <main class="artifact">
             <h1>{{ item.name }} - {{ item.category }}</h1>
             <div style="height: 20px;"></div>
@@ -54,11 +45,16 @@
                 </div>
             </div>
             <div style="height: 20px;"></div>
-            <div class="artifact__buttons">
+            <!-- <div class="artifact__buttons">
                 <button>Save</button>
                 <button>Next</button>
-            </div>
-            <div style="height: 20px;"></div>
+            </div> -->
+            <!-- <div style="height: 10px;"></div> -->
         </main>
+        <div class="footer">
+            <a >Save</a>
+            <a href="{% url 'discussion' item_pk=item.id %}">Discussion</a>
+            <a href="{% url 'course' code=code index=next_index %}">Next</a>
+        </div>
     </body>
 </html>
