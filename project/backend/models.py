@@ -47,6 +47,8 @@ class DiscussionPost(models.Model):
     time = models.DateTimeField(auto_now=True)
     post = models.TextField(null=True, blank=True)
 
+    class Meta:
+        ordering = ['-time']
 
 class SavedItem(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
