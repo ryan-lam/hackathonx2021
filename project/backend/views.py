@@ -64,7 +64,7 @@ def course(request, code, index=0):
 def discussion(request, item_pk=2):
     # DISCUSSION POST ITEM_PK MUST BE GREATER THAN 1
     if request.method == 'GET':
-        dps = DiscussionPost.objects.filter(item=item_pk)
+        dps = DiscussionPost.objects.filter(item=Item.objects.get(id=item_pk))
         item = Item.objects.get(id=item_pk)
         data = {"posts":dps, "item":item, "loggedIn": False}
         if "username" in request.session:
@@ -90,6 +90,11 @@ def discussion(request, item_pk=2):
                 request.session["username"] = request.POST["username"]
             except IntegrityError:
                 print('duplicate user')
+        elif request.POST['type'] == 'po':
+            dp = DiscussionPost(item=Item.objects.get(id=item_pk), 
+                                user=User.objects.get(username=request.session["username"]),
+                                post=request.POST["textarea"])
+            dp.save()
         return HttpResponseRedirect(reverse('discussion', args=[item_pk]))
 
 
