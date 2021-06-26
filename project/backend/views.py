@@ -133,6 +133,25 @@ def signup(request):
             return render(request, 'test.html', data)
 
 
+
+def save(request, code):
+    try:
+        item = Item.objects.get(id=code)
+        username = request.session["username"]
+        user = User.objects.get(username=username)
+        save_item = SavedItem(item=item, user=user)
+        save_item.save()
+        return render(request, "explore.html", {
+            "item":item
+        })
+    except:
+        print("ERROR")
+        return render(request, "index.html")
+
+
+
+
+
 def saved(request):
     try:
         username = request.session["username"]
