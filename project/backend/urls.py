@@ -7,10 +7,10 @@ from . import views
 urlpatterns = [
     ####### REAL URLS ######################
     path('', views.index, name="index"),
+    path('create', views.create, name="create"),
 
     ####### TESTING ######################## 
     path('img/<int:pk>', views.test_image),
-    path('create', views.create, name="create"),
     path('test_all_img', views.test_all_img, name="TEST ALL IMG"),
 ]
 
