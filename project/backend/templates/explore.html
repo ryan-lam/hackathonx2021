@@ -26,9 +26,10 @@
         <header class="header">
             <a style="" href="../">BACK</a>
             
-            <form class="course-code">
+            <form class="course-code" action="course/4YO9RL0">
                 <input type="text" name="code" placeholder="Enter Course Code" class="code-text">
-                <button type="submit" onmouseover="courseDO(this)">Get Course</button>
+                <button type="submit" onmouseover="courseDO()">Get Course</button> 
+                <!-- " -->
             </form>
         </header>
         
@@ -61,10 +62,10 @@
             const codetext = document.querySelector(".code-text");
             const formsub = document.querySelector(".course-code");
 
-            const courseDO = (e) => {
-                console.log("Course SUBMIT")
-                let str = "course/" + codetext;
-                e.action = str;
+            const courseDO = () => {
+                console.log("Course SUBMIT " + codetext.value)
+                let str = "course/" + codetext.value;
+                formsub.action = str;
             };
         </script>
     </body>
