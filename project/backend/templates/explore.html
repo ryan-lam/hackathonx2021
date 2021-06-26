@@ -26,10 +26,9 @@
         <header class="header">
             <a style="" href="../">BACK</a>
             
-            <form class="course-code" action="course/4YO9RL0">
+            <form class="course-code">
                 <input type="text" name="code" placeholder="Enter Course Code" class="code-text">
                 <button type="submit" onmouseover="courseDO()">Get Course</button> 
-                <!-- " -->
             </form>
         </header>
         
@@ -63,6 +62,9 @@
             const formsub = document.querySelector(".course-code");
 
             const courseDO = () => {
+                if (codetext.value == "") {
+                    pass;
+                }
                 console.log("Course SUBMIT " + codetext.value)
                 let str = "course/" + codetext.value;
                 formsub.action = str;

@@ -45,16 +45,19 @@ def explore(request):
 
 
 def course(request, code, index=0):
-    course = Course.objects.get(code=code)
     try:
-        sequence = Sequence.objects.get(course=course, index=index)
-        index+=1
-        print(sequence.item)
-        return render(request, "course.html", {
-            "item":sequence.item, "code":code, "next_index":index
-            })
+        course = Course.objects.get(code=code)
+        try:
+            sequence = Sequence.objects.get(course=course, index=index)
+            index+=1
+            print(sequence.item)
+            return render(request, "course.html", {
+                "item":sequence.item, "code":code, "next_index":index
+                })
+        except:
+            return render(request, "course_end.html")
     except:
-        return HttpResponseRedirect(reverse('index'))
+        return render(request, "course_not_found.html")
 
 def discussion(request, item_pk=2):
     # DISCUSSION POST ITEM_PK MUST BE GREATER THAN 1

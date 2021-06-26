@@ -24,11 +24,11 @@
         <p>{{ item.description | linebreaksbr }}</p> -->
         <h1 style="margin: auto; text-align: center; font-size: 3rem;" class="title">EXPLORE</h1>
         <header class="header">
-            <a style="" href="../">BACK</a>
+            <a style="" href="../../../">BACK</a>
             
             <form class="course-code">
-                <input type="text" name="code" placeholder="Enter Course Code">
-                <button type="submit">Get Course</button>
+                <input type="text" name="code" placeholder="Enter Course Code" class="code-text">
+                <button type="submit" onmouseover="courseDO()">Get Course</button> 
             </form>
         </header>
         
@@ -57,4 +57,18 @@
             <a href="{% url 'course' code=code index=next_index %}">Next</a>
         </div>
     </body>
+
+    <script>
+        const codetext = document.querySelector(".code-text");
+        const formsub = document.querySelector(".course-code");
+
+        const courseDO = () => {
+            if (codetext.value == "") {
+                pass;
+            }
+            console.log("Course SUBMIT " + codetext.value)
+            let str = "../../course/" + codetext.value;
+            formsub.action = str;
+        };
+    </script>
 </html>
