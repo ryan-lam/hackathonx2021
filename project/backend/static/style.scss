@@ -473,7 +473,7 @@ body{
     & > div{
         display: flex;
         flex-direction: row;
-        
+
         & > a{
             text-decoration: none;
             display: block;
@@ -631,7 +631,7 @@ body{
 .admin__item{
     display: flex;
     flex-direction: row;
-  
+    
     width: 80%;
     margin: auto;
     height: fit-content;
@@ -649,17 +649,25 @@ body{
 
     &--desc{
         width: 35%;
-        overflow: scroll;
+        overflow: auto;
         border: solid 1px #bfbfbf;
         height: 140px;
         margin: 0px 10px;
         outline: none;
         border: none;
+      
+  
+        
 
         & > p{
             padding-right: 10px;
         }
         
+    }
+
+    &--desc::-webkit-scrollbar{
+        width: 0 !important;
+        display: none; 
     }
 
     &--image{

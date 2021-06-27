@@ -24,7 +24,7 @@
                 <h2 class="admin__item--category">{{ item.category }}</h2>
                 <div class="admin__item--image" style="background-image: url({{ item.img.url }});"></div>
                 <!-- <img src="{{ item.img.url }}" width="200"> -->
-                <div class="admin__item--desc"><p>{{ item.description }}</p></div>
+                <div class="admin__item--desc" ><p>{{ item.description }}</p></div>
 
                 <div class="admin__item--buttons">
                     <form method="POST" action="{% url 'admin_edit_page' %}" class="admin__item--edit">

@@ -401,7 +401,7 @@ body {
     text-align: center; }
   .admin__item--desc {
     width: 35%;
-    overflow: scroll;
+    overflow: auto;
     border: solid 1px #bfbfbf;
     height: 140px;
     margin: 0px 10px;
@@ -409,6 +409,9 @@ body {
     border: none; }
     .admin__item--desc > p {
       padding-right: 10px; }
+  .admin__item--desc::-webkit-scrollbar {
+    width: 0 !important;
+    display: none; }
   .admin__item--image {
     width: 20%;
     background-position: center;
