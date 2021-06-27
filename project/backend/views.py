@@ -182,7 +182,6 @@ def user_admin(request):
             items = Item.objects.all()
             dps = DiscussionPost.objects.all()
             courses = Course.objects.all()
-            print('error')
             return render(request, 'admin_panel.html', {
                 "items": items, "dps": dps, "courses": courses
                 })
