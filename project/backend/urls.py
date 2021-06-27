@@ -15,6 +15,7 @@ urlpatterns = [
     path('course/<str:code>', views.course, name="course"),
     path('save', views.save, name='save'),
     path('saved', views.saved, name='saved'),
+    path('user-admin', views.user_admin, name='admin'),
 
     path('discussion', views.discussion, name="discussion"),
     path('discussion/<str:item_pk>', views.discussion, name="discussion"),

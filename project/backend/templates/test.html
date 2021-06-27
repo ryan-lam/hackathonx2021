@@ -6,11 +6,32 @@
     <body>
         <form method="POST">
             {% csrf_token %}
-            <input type="text" name="username" placeholder="username">
-            <input type="text" name="password" placeholder="password">
+            <input type="text" name="type" style="display: none;" value="add">
             <input type="text" name="name" placeholder="name">
-            <button type="submit">Get Course</button>
+            <input type="text" name="category" placeholder="category">
+            <input type="text" name="description" placeholder="description">
+            <button type="submit">Add</button>
         </form>
+        <ul>
+            {% for item in items %}
+            <li> {{item.name}}     
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="type" style="display: none;" value="edit">
+                    <input type="number" name="item-id" style="display: none;" value="{{item.id}}">
+                    <input type="text" name="new-name" placeholder="new name">
+                    <button type="submit">Edit</button>
+                </form>
+                <form method="POST"> 
+                    {% csrf_token %}
+                    <input type="text" name="type" style="display: none;" value="delete">
+                    <input type="number" name="item-id" style="display: none;" value="{{item.id}}">
+                    <button type="submit">Delete</button>
+                </form>
+    </li>
+            {% endfor %}
+        
+        </ul>
         <p> {{ loginSuccess }}</p>
         <p> {{ signupSuccess }}</p>
     </body>

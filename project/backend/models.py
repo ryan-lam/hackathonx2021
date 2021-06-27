@@ -2,15 +2,6 @@ from django.db import models
 
 # Create your models here.
 
-class User(models.Model):
-    username = models.CharField(max_length=64, unique=True)
-    password = models.CharField(max_length=64)
-    name = models.CharField(max_length=64)
-
-    def __str__(self):
-        return f'{self.name}. Username: {self.username}'
-
-
 class Item(models.Model):
     name = models.CharField(max_length=200)
     category = models.CharField(max_length=200, default="Dinosaurs")
@@ -22,6 +13,14 @@ class Item(models.Model):
     def __str__(self):
         return f'id: {self.id}, name: {self.name}, category: {self.category}'
 
+class User(models.Model):
+    username = models.CharField(max_length=64, unique=True)
+    password = models.CharField(max_length=64)
+    name = models.CharField(max_length=64)
+    items = models.ManyToManyField(Item, blank=True)
+
+    def __str__(self):
+        return f'{self.name}. Username: {self.username}'
 
 class Course(models.Model):
     code = models.CharField(max_length=7, unique=True)
@@ -49,6 +48,9 @@ class DiscussionPost(models.Model):
 
     class Meta:
         ordering = ['-time']
+
+    def __str__(self):
+        return f'{self.post}. BY {self.user.name}. POSTED ON {self.time.month}/{self.time.day} TO {self.item.name}'
 
 class SavedItem(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
