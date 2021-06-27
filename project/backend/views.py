@@ -54,7 +54,7 @@ def course(request, code, index=0):
             index+=1
             print(sequence.item)
             return render(request, "course.html", {
-                "item":sequence.item, "code":code, "next_index":index
+                "item":sequence.item, "code":code, "curr_index": index-1, "next_index":index
                 })
         except:
             return render(request, "course_end.html")
@@ -135,18 +135,15 @@ def signup(request):
 
 
 # FOR DISCUSSION POSTS
-def save(request, course_code='', index=0):
+def save(request, item_pk, course_code='', index=0):
     try:
-        code = request.POST["item_code"]
-        item = Item.objects.get(id=code)
+        item = Item.objects.get(id=item_pk)
         username = request.session["username"]
         user = User.objects.get(username=username)
         save_item = SavedItem(item=item, user=user)
         save_item.save()
-        if code == '':
-            return render(request, "explore.html", {
-                "item":item
-            })
+        if course_code == '':
+            return HttpResponseRedirect(reverse('explore'))
         else:
             return HttpResponseRedirect(reverse('course', args=[course_code, index]))
     except:

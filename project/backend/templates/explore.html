@@ -27,7 +27,7 @@
             <a href="../">BACK</a>
             
             <form class="course-code">
-                <input type="text" name="code" placeholder="Enter Course Code" class="code-text" minlength=7>
+                <input type="text" name="code" placeholder="Enter Course Code" class="code-text" minlength=7 required>
                 <button type="submit" onmouseover="courseDO()">Get Course</button> 
             </form>
         </header>
@@ -52,7 +52,7 @@
             <!-- <div style="height: 10px;"></div> -->
         </main>
         <div class="footer">
-            <a>Save</a>
+            <a href="{% url 'save' item_pk=item.id %}">Save</a>
             <a href="{% url 'discussion' item_pk=item.id %}">Discussion</a>
             <a href="">Next</a>
         </div>
