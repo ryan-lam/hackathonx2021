@@ -191,9 +191,8 @@ def admin_delete(request):
 def admin_delete_posts(request):
     user = User.objects.get(username=request.POST["post_username"])
     item = Item.objects.get(id=request.POST["post_item_id"])
-    time = request.POST["post_time"]
     content = request.POST["post_content"]
-    dpost = DiscussionPost(user=user, item=item, time=time, post=content)
+    dpost = DiscussionPost.objects.get(user=user, item=item, post=content)
     dpost.delete()
     return HttpResponseRedirect(reverse("user-admin"))
 
