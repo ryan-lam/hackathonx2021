@@ -9,6 +9,7 @@ urlpatterns = [
     path('', views.index, name="index"),
     path('create', views.create, name="create"),
     path('explore/', views.explore, name="explore"),
+    path('explore/<str:pk>', views.explore, name="explore"),
     path('login', views.login, name='login'),
     path('signup', views.signup, name='signup'),
     path('course/<str:code>/<int:index>', views.course, name="course"),

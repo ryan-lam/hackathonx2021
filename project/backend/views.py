@@ -34,16 +34,21 @@ def create(request):
         data.update({"code": code})
         return render(request, "create.html", data)
 
-def explore(request):
+def explore(request, pk=""):
     if request.method == 'GET':
-        random_id = random.randint(2, Item.objects.count())
-        print("INTTT")
-        print(random_id)
-        item = Item.objects.get(id=random_id)
-        
-        return render(request, "explore.html", {
-            "item":item
-        })
+        if pk == "":
+            random_id = random.randint(2, Item.objects.count())
+            item = Item.objects.get(id=random_id)
+            print(item)
+            return render(request, "explore.html", {
+                "item":item
+            })
+        else:
+            item = Item.objects.get(id=int(pk))
+            print(item)
+            return render(request, "explore.html", {
+                "item":item
+            })
     elif request.method == 'POST':
         return HttpResponseRedirect(reverse('course', args=[request.POST["code"]]))
 
@@ -142,8 +147,9 @@ def save(request, item_pk, course_code='', index=0):
         item = Item.objects.get(id=item_pk)
         username = request.session["username"]
         user = User.objects.get(username=username)
-        save_item = SavedItem(item=item, user=user)
-        save_item.save()
+        if len(SavedItem.objects.filter(item=item, user=user)) == 0:
+            save_item = SavedItem(item=item, user=user)
+            save_item.save()
         if course_code == '':
             return HttpResponseRedirect(reverse('explore'))
         else:

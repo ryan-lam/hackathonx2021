@@ -2,7 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="../static/style.css">
-        <h1 class="title-discussion">Discussion Forum</h1>
+        <h1 class="title-discussion">SAVED ARTIFACTS</h1>
         <style>
             .title-discussion{
                 text-align: center;
@@ -17,11 +17,13 @@
     </head>
 
     <body>
-        <h1>SAVED</h1>
+
 
 
         {% for saved in saved_items %}
-            <h4>{{ saved.item }} — {{ saved.time }}</h4>
+            <h4>{{ saved.item.name }}, {{ saved.item.category}} — {{ saved.time }}</h4>
+            <img src="{{ saved.item.img.url }}" width="200">
+            <a href="{% url 'explore' pk=saved.item.id %}">Visit Artifact</a>
         {% endfor %}
 
 
