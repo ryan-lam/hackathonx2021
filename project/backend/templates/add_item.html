@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../static/style.css">
+        <title>Add Item</title>
+    </head>
+    <body>
+        <h1 class="adding__item--title">ADD ITEM</h1>
+
+        <form method="POST" enctype="multipart/form-data" action="{% url 'admin_add' %}" class="add__form">
+            {% csrf_token %}
+            <label for="name" class="add__form--name normal">名字</label>
+            <input type="text" name="item_name" value="" placeholder="Name of Item" required>
+            <div style="height: 10px;"></div>
+            <label for="name" class="add__form--category">类型</label>
+            <input type="text" name="item_category" value="" placeholder="Category of Item" required>
+            <div style="height: 10px;"></div>
+            <label for="name" class="add__form--desc">描述</label>
+            <textarea id="textarea" name="item_description" rows="4" cols="50" required></textarea>
+            <div style="height: 10px;"></div>
+
+            <input type="file" name="images" required class="add__form--upload" id="upload" style="border: none;">
+        
+            <div style="height: 10px;"></div>
+            <button type="submit" class="add__form--submit">ADD</button>
+        </form>
+
+        <p> {{ loginSuccess }}</p>
+        <p> {{ signupSuccess }}</p>
+    </body>
+</html>

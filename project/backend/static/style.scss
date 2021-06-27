@@ -514,10 +514,6 @@ body{
 
 
 
-.showingPopup{
-    animation: showingSaved 5s linear;
-}
-
 //////////////////DISCUSSION HTML PAGE////////////////////
 
 //////////////////DISCUSSION HTML PAGE////////////////////
@@ -602,6 +598,7 @@ body{
             resize: vertical;
             padding: 10px 20px;
             margin-top: 10px;
+            
 
             &:focus{
                 outline: none;
@@ -611,6 +608,211 @@ body{
 
 }
 
-.post-discuss{
+//////////////////ADMIN HTML PAGE////////////////////
+
+//////////////////ADMIN HTML PAGE////////////////////
+
+//////////////////ADMIN HTML PAGE////////////////////
+
+//////////////////ADMIN HTML PAGE////////////////////
+
+//////////////////ADMIN HTML PAGE////////////////////
+
+//////////////////ADMIN HTML PAGE////////////////////
+
+//////////////////ADMIN HTML PAGE////////////////////
+
+
+.admin__item{
+    display: flex;
+    flex-direction: row;
+  
+    width: 80%;
+    margin: auto;
+    height: fit-content;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 20px 10px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 0px #bfbfbf;
+
+    & > h2{
+        width: 15%;
+        padding: 0px 10px;
+        text-align: center;
+    }
+
+    &--desc{
+        width: 35%;
+        overflow: scroll;
+        border: solid 1px #bfbfbf;
+        height: 140px;
+        margin: 0px 10px;
+        outline: none;
+        border: none;
+
+        & > p{
+            padding-right: 10px;
+        }
+        
+    }
+
+    &--image{
+        width: 20%;
+        background-position: center;
+        background-size: cover;
+
+        height: 140px;
+     
+    }
+
+    &--buttons{
+        width: 10%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        
+        height: 80px;
+    }
+
+    &--edit{
+
+        width: 100%;
+        & > button{
+            padding: 5px 5px;
+            background-color: #42b983;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            border-radius: 10px;
+
+            &:hover{
+                cursor: pointer;
+                background-color: #2c9163;
+            }
+        }
+    }
+
+    &--delete{
+        width: 100%;
+        & > button{
+            padding: 5px 5px;
+            font-size: 1rem;
+            background-color: rgb(233, 75, 47);
+            border: none;
+            color: white;
+            border-radius: 10px;
+
+            &:hover{
+                cursor: pointer;
+                background-color: rgb(185, 59, 37);
+            }
+        }
+    }
 
 }
+
+//////////////////ADD ITEM HTML PAGE////////////////////
+
+//////////////////ADD ITEM HTML PAGE////////////////////
+
+//////////////////ADD ITEM HTML PAGE////////////////////
+
+//////////////////ADD ITEM HTML PAGE////////////////////
+
+//////////////////ADD ITEM HTML PAGE////////////////////
+
+//////////////////ADD ITEM HTML PAGE////////////////////
+
+input:focus, textarea{
+    outline: none;
+}
+
+.adding__item--title{
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    margin: auto;
+    font-size: 2rem;
+    color: black;
+    padding: 20px 0px;
+    font-weight: 400;
+    width: fit-content;
+    
+
+}
+
+.adding__item--title--click:hover{
+    color: rgb(77, 77, 77);
+}
+
+.add__form{
+    width: 700px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0px 0px 10px 0px #bfbfbf;
+    padding: 20px 40px;
+    border-radius: 20px;
+
+    & > label{
+        font-weight: 200;
+        font-size: 1rem;
+        text-align: left;
+    }
+
+    & > input{
+        font-size: 1.5rem;
+        border: none;
+        padding: 10px 20px;
+        border-bottom: solid 2px #3a3a3a;
+        outline: none;
+        
+    }
+
+    & > textarea{
+        border-radius: 10px;
+        padding: 20px 20px;
+        font-family: Arial, Helvetica, sans-serif;
+        margin-top: 10px;
+        font-size: 1rem;
+
+    }
+
+    &--upload::-webkit-file-upload-button {
+        content: 'Upload Photo';
+        background-color: white;
+        border: solid 2px black;
+        outline: none;
+        font-size: 1rem;
+        padding: 5px 10px;
+
+        &:hover{
+            background-color: #bfbfbf;
+            cursor: pointer;
+        }
+    }
+
+    &--submit{
+        background-color: #42b983;
+        color: white;
+        padding: 10px 20px;
+        font-size: 1.5rem;
+        border: none;
+        border-radius: 10px;
+
+        &:hover{
+            cursor: pointer;
+            background-color: #2c9163;
+
+        }
+    }
+
+}
+
+
+
+
+

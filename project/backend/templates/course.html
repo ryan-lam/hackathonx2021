@@ -45,17 +45,21 @@
                 </div>
             </div>
             <div style="height: 20px;"></div>
-            <!-- <div class="artifact__buttons">
-                <button>Save</button>
-                <button>Next</button>
-            </div> -->
-            <!-- <div style="height: 10px;"></div> -->
+
         </main>
-        <div class="footer">
+        <!-- <div class="footer">
             <a >Save</a>
             <a href="{% url 'discussion' item_pk=item.id %}">Discussion</a>
             <a href="{% url 'course' code=code index=next_index %}">Next</a>
-        </div>
+        </div> -->
+
+        <form class="footer" method="POST" action="{% url 'save' %}">
+            {% csrf_token %}
+            <input type="text" style="display: none;" value="{{ item.id }}" name="item_code">
+            <button class="alink" type="submit" onclick="showPopup()">Save</button>
+            <a class="alink" href="{% url 'discussion' item_pk=item.id %}">Discussion</a>
+            <a class="alink" href="{% url 'course' code=code index=next_index %}">Next</a>
+        </form>
     </body>
 
     <script>

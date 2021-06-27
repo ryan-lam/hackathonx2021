@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../static/style.css">
+        <title>Edit Item</title>
+    </head>
+    <body>
+        <h1 class="adding__item--title">EDIT ITEM</h1>
+        <!-- <h2>{{item.name}} - {{ item.category }}</h2>
+        <img src="{{ item.img.url }}" width="200">
+        <p>{{ item.description }}</p> -->
+
+        <main class="artifact" style="height: 50%; width: 800px;">
+            <h1>{{ item.name }} - {{ item.category }}</h1>
+            <div style="height: 20px;"></div>
+            <div class="artifact__content">
+                <div style="background-image: url({{ item.img.url }});" class="img"></div>
+                <div class="text">
+                    <h3>Description</h3>
+                    <p>{{ item.description }}</p>
+                </div>
+            </div>
+            <div style="height: 20px;"></div>
+        </main>
+
+        <div style="height: 40px;"></div>
+        <form method="POST" enctype="multipart/form-data" action="{% url 'admin_edit' %}" class="add__form">
+            <!-- {% csrf_token %}
+
+            <input type="text" name="item_name" value="{{ item.name }}">
+            <input type="text" name="item_category" value="{{ item.category }}">
+            <textarea id="textarea" name="item_description" rows="4" cols="50">{{ item.description }}</textarea>
+            <input type="file" name="images">
+
+            <input type="hidden" name="item_id" value="{{ item.id }}">
+            <button type="submit">Save</button> -->
+
+            {% csrf_token %}
+            <label for="name" class="add__form--name normal">Name</label>
+            <input type="text" name="item_name" value="{{ item.name }}" required>
+            <div style="height: 10px;"></div>
+            <label for="name" class="add__form--category">Category</label>
+            <input type="text" name="item_category" value="{{ item.category }}" required>
+            <div style="height: 10px;"></div>
+            <label for="name" class="add__form--desc">Description</label>
+            <textarea id="textarea" name="item_description" rows="4" cols="50" required></textarea>
+            <div style="height: 10px;"></div>
+
+            <input type="file" name="images" required class="add__form--upload" id="upload" style="border: none;">
+            <input type="hidden" name="item_id" value="{{ item.id }}">
+            <div style="height: 10px;"></div>
+            <button type="submit" class="add__form--submit">Save</button>
+        </form>
+        <div style="height: 40px;"></div>
+
+
+        <p> {{ loginSuccess }}</p>
+        <p> {{ signupSuccess }}</p>
+    </body>
+</html>

@@ -30,7 +30,7 @@
         <p>{{ item.description | linebreaksbr }}</p> -->
         <h1 style="margin: auto; text-align: center; font-size: 3rem;" class="title">EXPLORE</h1>
         <header class="header">
-            <a style="" href="../">BACK</a>
+            <a href="../">BACK</a>
             
             <form class="course-code">
                 <input type="text" name="code" placeholder="Enter Course Code" class="code-text" minlength=7>
@@ -44,7 +44,7 @@
             <h1>{{ item.name }} - {{ item.category }}</h1>
             <div style="height: 20px;"></div>
             <div class="artifact__content">
-                <div style="background-image: url({{ item.img.url }});" class="img"></div>
+                <div style="background-image: url({{item.img.url}});" class="img"></div>
                 <div class="text">
                     <h3>Description</h3>
                     <p>{{ item.description | linebreaksbr }}</p>
@@ -73,7 +73,7 @@
 
             const courseDO = () => {
                 console.log("Course SUBMIT " + codetext.value)
-                let str = "course/" + codetext.value;
+                let str = "../course/" + codetext.value;
                 formsub.action = str;
             };
 
