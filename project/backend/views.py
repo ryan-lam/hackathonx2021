@@ -34,14 +34,21 @@ def create(request):
         data.update({"code": code})
         return render(request, "create.html", data)
 
-def explore(request):
+def explore(request, pk=""):
     if request.method == 'GET':
-        random_id = random.randint(2, Item.objects.count())
-        item = Item.objects.get(id=random_id)
-        print(item)
-        return render(request, "explore.html", {
-            "item":item
-        })
+        if pk == "":
+            random_id = random.randint(2, Item.objects.count())
+            item = Item.objects.get(id=random_id)
+            print(item)
+            return render(request, "explore.html", {
+                "item":item
+            })
+        else:
+            item = Item.objects.get(id=int(pk))
+            print(item)
+            return render(request, "explore.html", {
+                "item":item
+            })
     elif request.method == 'POST':
         return HttpResponseRedirect(reverse('course', args=[request.POST["code"]]))
 
