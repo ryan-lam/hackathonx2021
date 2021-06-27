@@ -27,18 +27,43 @@
                 <div class="admin__item--desc"><p>{{ item.description }}</p></div>
 
                 <div class="admin__item--buttons">
-                <form method="POST" action="{% url 'admin_edit_page' %}" class="admin__item--edit">
-                    {% csrf_token %}
-                    <input type="hidden" name="item_id" value="{{ item.id }}">
-                    <button type="submit" >Edit</button>
-                </form>
+                    <form method="POST" action="{% url 'admin_edit_page' %}" class="admin__item--edit">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_id" value="{{ item.id }}">
+                        <button type="submit" >Edit</button>
+                    </form>
 
-                <form method="POST" action="{% url 'admin_delete' %}" class="admin__item--delete">
-                    {% csrf_token %}
-                    <input type="hidden" name="item_id" value="{{ item.id }}">
-                    <button type="submit" >Delete</button>
-                </form>
+                    <form method="POST" action="{% url 'admin_delete' %}" class="admin__item--delete">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_id" value="{{ item.id }}">
+                        <button type="submit" >Delete</button>
+                    </form>
                 </div>
+
+            </div>
+            <div style="height: 40px;"></div>
+            {% endfor %}
+        
+        </section>
+
+        <h1 class="adding__item--title">POSTS</h1>
+
+        <section class="admin__posts">
+
+            {% for post in dps %}
+            <div class="posts__item"> 
+                <h2 class="posts__item--user">{{ post.user.name }}</h2>
+                <h2 class="posts__item--name">{{post.item.name}}</h3>
+                <p class="posts__item--time">posted at {{ post.time }}</p>
+                <p class="posts__item--text">{{ post.post }}</p>
+                
+                <form method="POST" action="{% url 'admin_delete_posts' %}" class="posts__item--delete">
+                    {% csrf_token %}
+                    <input type="hidden" name="post_username" value="{{ post.user.username }}">
+                    <input type="hidden" name="post_item_id" value="{{ post.item.id }}">
+                    <input type="hidden" name="post_content" value="{{ post.post }}">
+                    <button type="submit">Delete</button>
+                </form>
 
             </div>
             <div style="height: 40px;"></div>

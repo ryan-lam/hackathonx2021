@@ -713,6 +713,56 @@ body{
 
 }
 
+.posts__item{
+    display: flex;
+    flex-direction: row;
+  
+    width: 80%;
+    margin: auto;
+    height: fit-content;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 20px 10px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 0px #bfbfbf;
+
+    & > h2{
+        width: 15%;
+        padding: 0px 10px;
+        text-align: center;
+    }
+
+    &--time{
+        width: 15%;
+        text-align: center;
+    }
+
+    &--text{
+        width: 45%;
+        padding: 0px 20px;
+    }
+
+    &--delete{
+        width: 10%;
+        & > button{
+            padding: 5px 5px;
+            font-size: 1rem;
+            background-color: rgb(233, 75, 47);
+            border: none;
+            color: white;
+            border-radius: 10px;
+
+            &:hover{
+                cursor: pointer;
+                background-color: rgb(185, 59, 37);
+            }
+        }
+    }
+
+
+    
+}
+
 //////////////////ADD ITEM HTML PAGE////////////////////
 
 //////////////////ADD ITEM HTML PAGE////////////////////
@@ -811,6 +861,9 @@ input:focus, textarea{
     }
 
 }
+
+
+
 
 
 

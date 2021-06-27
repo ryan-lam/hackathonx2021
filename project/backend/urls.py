@@ -13,10 +13,12 @@ urlpatterns = [
     path('signup', views.signup, name='signup'),
     path('course/<str:code>/<int:index>', views.course, name="course"),
     path('course/<str:code>', views.course, name="course"),
-    path('save', views.save, name='save'),
+    path('save/<int:item_pk>', views.save, name='save'),
+    path('save/<int:item_pk>/<str:course_code>/<int:index>', views.save, name='save'),
     path('saved', views.saved, name='saved'),
     path('user-admin', views.user_admin, name='user-admin'),
     path('admin_delete', views.admin_delete, name='admin_delete'),
+    path('admin_delete/posts', views.admin_delete_posts, name='admin_delete_posts'),
     path('admin_edit_page', views.admin_edit_page, name='admin_edit_page'),
     path('admin_edit', views.admin_edit, name='admin_edit'),
 

@@ -6,6 +6,7 @@ from .models import *
 from project import settings
 import random, string
 from django.db import IntegrityError
+from datetime import datetime
 
 def generate_code():
     return ''.join(random.choice(string.ascii_uppercase + string.digits) for i in range(7))
@@ -36,8 +37,10 @@ def create(request):
 def explore(request):
     if request.method == 'GET':
         random_id = random.randint(2, Item.objects.count())
+        print("INTTT")
+        print(random_id)
         item = Item.objects.get(id=random_id)
-        print(item)
+        
         return render(request, "explore.html", {
             "item":item
         })
@@ -53,7 +56,7 @@ def course(request, code, index=0):
             index+=1
             print(sequence.item)
             return render(request, "course.html", {
-                "item":sequence.item, "code":code, "next_index":index
+                "item":sequence.item, "code":code, "curr_index": index-1, "next_index":index
                 })
         except:
             return render(request, "course_end.html")
@@ -134,17 +137,17 @@ def signup(request):
 
 
 # FOR DISCUSSION POSTS
-def save(request):
+def save(request, item_pk, course_code='', index=0):
     try:
-        code = request.POST["item_code"]
-        item = Item.objects.get(id=code)
+        item = Item.objects.get(id=item_pk)
         username = request.session["username"]
         user = User.objects.get(username=username)
         save_item = SavedItem(item=item, user=user)
         save_item.save()
-        return render(request, "explore.html", {
-            "item":item
-        })
+        if course_code == '':
+            return HttpResponseRedirect(reverse('explore'))
+        else:
+            return HttpResponseRedirect(reverse('course', args=[course_code, index]))
     except:
         print("Not Logged In")
         return render(request, "index.html")
@@ -173,16 +176,26 @@ def user_admin(request):
             items = Item.objects.all()
             dps = DiscussionPost.objects.all()
             courses = Course.objects.all()
+            print('error')
             return render(request, 'admin_panel.html', {
                 "items": items, "dps": dps, "courses": courses
                 })
     except:
+        print('error')
         return render(request, 'index.html')
 
 def admin_delete(request):
     item_id = request.POST["item_id"]
     item = Item.objects.get(id=item_id)
     item.delete()
+    return HttpResponseRedirect(reverse("user-admin"))
+
+def admin_delete_posts(request):
+    user = User.objects.get(username=request.POST["post_username"])
+    item = Item.objects.get(id=request.POST["post_item_id"])
+    content = request.POST["post_content"]
+    dpost = DiscussionPost.objects.get(user=user, item=item, post=content)
+    dpost.delete()
     return HttpResponseRedirect(reverse("user-admin"))
 
 def admin_edit_page(request):
