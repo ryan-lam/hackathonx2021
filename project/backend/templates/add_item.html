@@ -9,13 +9,13 @@
 
         <form method="POST" enctype="multipart/form-data" action="{% url 'admin_add' %}" class="add__form">
             {% csrf_token %}
-            <label for="name" class="add__form--name normal">名字</label>
+            <label for="name" class="add__form--name normal">Name</label>
             <input type="text" name="item_name" value="" placeholder="Name of Item" required>
             <div style="height: 10px;"></div>
-            <label for="name" class="add__form--category">类型</label>
+            <label for="name" class="add__form--category">Category</label>
             <input type="text" name="item_category" value="" placeholder="Category of Item" required>
             <div style="height: 10px;"></div>
-            <label for="name" class="add__form--desc">描述</label>
+            <label for="name" class="add__form--desc">Description</label>
             <textarea id="textarea" name="item_description" rows="4" cols="50" required></textarea>
             <div style="height: 10px;"></div>
 
