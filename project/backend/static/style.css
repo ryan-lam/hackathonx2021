@@ -297,15 +297,18 @@ body {
   align-items: center;
   height: 100px;
   align-content: center; }
-  .header > a {
-    text-decoration: none;
-    display: block;
-    background-color: black;
-    font-size: 1rem;
-    padding: 10px 20px;
-    margin-left: 30px;
-    color: white;
-    border-radius: 10px; }
+  .header > div {
+    display: flex;
+    flex-direction: row; }
+    .header > div > a {
+      text-decoration: none;
+      display: block;
+      background-color: black;
+      font-size: 1rem;
+      padding: 10px 20px;
+      margin-left: 30px;
+      color: white;
+      border-radius: 10px; }
 
 .footer {
   margin-bottom: 0;
@@ -539,3 +542,35 @@ input:focus, textarea {
     .add__form--submit:hover {
       cursor: pointer;
       background-color: #2c9163; }
+
+.saved__item {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: auto;
+  height: fit-content;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 20px 10px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px 0px #bfbfbf; }
+  .saved__item > h2 {
+    width: 15%;
+    padding: 0px 10px;
+    text-align: center; }
+  .saved__item--image {
+    width: 35%;
+    background-position: center;
+    background-size: cover;
+    height: 140px; }
+  .saved__item--visit {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1rem; }
+    .saved__item--visit:hover {
+      background-color: #7e7e7e; }

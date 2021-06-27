@@ -470,15 +470,20 @@ body{
     //     text-decoration: none;
 
     // }
-    & > a{
-        text-decoration: none;
-        display: block;
-        background-color: black;
-        font-size: 1rem;
-        padding: 10px 20px;
-        margin-left: 30px;
-        color: white;
-        border-radius: 10px;
+    & > div{
+        display: flex;
+        flex-direction: row;
+        
+        & > a{
+            text-decoration: none;
+            display: block;
+            background-color: black;
+            font-size: 1rem;
+            padding: 10px 20px;
+            margin-left: 30px;
+            color: white;
+            border-radius: 10px;
+        }
     }
 }
 
@@ -838,12 +843,15 @@ input:focus, textarea{
         outline: none;
         font-size: 1rem;
         padding: 5px 10px;
+        
 
         &:hover{
             background-color: #bfbfbf;
             cursor: pointer;
         }
     }
+
+ 
 
     &--submit{
         background-color: #42b983;
@@ -862,7 +870,73 @@ input:focus, textarea{
 
 }
 
+////////SAVED HTML///////////
 
+////////SAVED HTML///////////
+////////SAVED HTML///////////
+////////SAVED HTML///////////
+
+////////SAVED HTML///////////
+
+////////SAVED HTML///////////
+
+////////SAVED HTML///////////
+
+
+////////SAVED HTML///////////
+////////SAVED HTML///////////
+
+////////SAVED HTML///////////
+////////SAVED HTML///////////
+
+.saved__item{
+    display: flex;
+    flex-direction: row;
+  
+    width: 80%;
+    margin: auto;
+    height: fit-content;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 20px 10px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 0px #bfbfbf;
+
+    & > h2{
+        width: 15%;
+        padding: 0px 10px;
+        text-align: center;
+    }
+
+
+
+    &--image{
+        width: 35%;
+        background-position: center;
+        background-size: cover;
+
+        height: 140px;
+     
+    }
+
+    &--visit{
+      
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        color: white;
+        background-color: black;
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-size: 1rem;
+
+        &:hover{
+            background-color: #7e7e7e;
+        }
+
+    }
+
+}
 
 
 
