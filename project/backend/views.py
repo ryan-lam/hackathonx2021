@@ -95,7 +95,7 @@ def discussion(request, item_pk=2):
             dp = DiscussionPost(item=Item.objects.get(id=item_pk), 
                                 user=User.objects.get(username=request.session["username"]),
                                 post=request.POST["textarea"])
-            dp.save()
+            dp.save()                
         return HttpResponseRedirect(reverse('discussion', args=[item_pk]))
 
 
@@ -165,7 +165,32 @@ def saved(request):
         print("NEED TO LOGIN")
         return render(request, 'index.html')
 
-
+def user_admin(request):
+    if "username" not in request.session:
+        return render(request, 'index.html')
+    if request.session["username"] != 'admin':
+        return render(request, 'index.html')
+    if request.method == 'GET':
+        items = Item.objects.all()
+        dps = DiscussionPost.objects.all()
+        courses = Course.objects.all()
+        return render(request, 'test.html', {"items": items, "dps": dps, "courses": courses})
+    elif request.method == 'POST':
+        if request.POST["type"] == 'edit':
+            item = Item.objects.get(id=request.POST["item-id"])
+            item.name = request.POST["new-name"]
+            item.save()
+        elif request.POST["type"] == 'delete':
+            item = Item.objects.get(id=request.POST["item-id"])
+            item.delete()
+        elif request.POST["type"] == 'add':
+            name = request.POST["name"]
+            category = request.POST["category"]
+            description = request.POST["description"]
+            img = '../media/images/apple-park.jpg'
+            item = Item(name=name, category=category, description=description, img=img)
+            item.save()
+        return HttpResponseRedirect(reverse('admin'))
 
 
 
