@@ -135,7 +135,7 @@ def signup(request):
 
 
 # FOR DISCUSSION POSTS
-def save(request):
+def save(request, course_code='', index=0):
     try:
         code = request.POST["item_code"]
         item = Item.objects.get(id=code)
@@ -143,9 +143,12 @@ def save(request):
         user = User.objects.get(username=username)
         save_item = SavedItem(item=item, user=user)
         save_item.save()
-        return render(request, "explore.html", {
-            "item":item
-        })
+        if code == '':
+            return render(request, "explore.html", {
+                "item":item
+            })
+        else:
+            return HttpResponseRedirect(reverse('course', args=[course_code, index]))
     except:
         print("ERROR")
         return render(request, "index.html")
