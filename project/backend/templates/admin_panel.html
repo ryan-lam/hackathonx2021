@@ -31,6 +31,25 @@
             {% endfor %}
         
         </ul>
+        <ul>
+            {% for post in dps %}
+            <li> 
+                <h2>{{post.item.name}} - {{ post.user.name }}</h2>
+                <p>{{ post.post }}</p>
+
+                <form method="POST" action="{% url 'admin_delete' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="post_username" value="{{ post.user.username }}">
+                    <input type="hidden" name="post_item_id" value="{{ post.item.id }}">
+                    <input type="hidden" name="post_time" value="{{ post.time }}">
+                    <input type="hidden" name="post_content" value="{{ post.post }}">
+                    <button type="submit">Delete</button>
+                </form>
+
+            </li>
+            {% endfor %}
+        
+        </ul>
 
 
         <p> {{ loginSuccess }}</p>

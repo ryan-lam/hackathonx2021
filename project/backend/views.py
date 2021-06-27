@@ -6,6 +6,7 @@ from .models import *
 from project import settings
 import random, string
 from django.db import IntegrityError
+from datetime import datetime
 
 def generate_code():
     return ''.join(random.choice(string.ascii_uppercase + string.digits) for i in range(7))
@@ -173,16 +174,27 @@ def user_admin(request):
             items = Item.objects.all()
             dps = DiscussionPost.objects.all()
             courses = Course.objects.all()
+            print('error')
             return render(request, 'admin_panel.html', {
                 "items": items, "dps": dps, "courses": courses
                 })
     except:
+        print('error')
         return render(request, 'index.html')
 
 def admin_delete(request):
     item_id = request.POST["item_id"]
     item = Item.objects.get(id=item_id)
     item.delete()
+    return HttpResponseRedirect(reverse("user-admin"))
+
+def admin_delete_posts(request):
+    user = User.objects.get(username=request.POST["post_username"])
+    item = Item.objects.get(id=request.POST["post_item_id"])
+    time = request.POST["post_time"]
+    content = request.POST["post_content"]
+    dpost = DiscussionPost(user=user, item=item, time=time, post=content)
+    dpost.delete()
     return HttpResponseRedirect(reverse("user-admin"))
 
 def admin_edit_page(request):
