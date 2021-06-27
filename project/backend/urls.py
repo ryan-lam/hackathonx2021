@@ -20,6 +20,11 @@ urlpatterns = [
     path('admin_edit_page', views.admin_edit_page, name='admin_edit_page'),
     path('admin_edit', views.admin_edit, name='admin_edit'),
 
+    path('admin_add_page', views.admin_add_page, name='admin_add_page'),
+    path('admin_add', views.admin_add, name='admin_add'),
+
+
+
     path('discussion', views.discussion, name="discussion"),
     path('discussion/<str:item_pk>', views.discussion, name="discussion"),
 

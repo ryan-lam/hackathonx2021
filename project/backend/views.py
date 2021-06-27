@@ -133,7 +133,7 @@ def signup(request):
             return render(request, 'test.html', data)
 
 
-
+# FOR DISCUSSION POSTS
 def save(request):
     try:
         code = request.POST["item_code"]
@@ -148,10 +148,6 @@ def save(request):
     except:
         print("ERROR")
         return render(request, "index.html")
-
-
-
-
 
 def saved(request):
     try:
@@ -177,7 +173,7 @@ def user_admin(request):
             items = Item.objects.all()
             dps = DiscussionPost.objects.all()
             courses = Course.objects.all()
-            return render(request, 'test.html', {
+            return render(request, 'admin_panel.html', {
                 "items": items, "dps": dps, "courses": courses
                 })
     except:
@@ -201,19 +197,40 @@ def admin_edit(request):
     item_name = request.POST["item_name"]
     item_category = request.POST["item_category"]
     item_description = request.POST["item_description"]
-    img = request.FILES.getlist("images")
-    item = Item.objects.get(id=item_id)
-    item.name = item_name
-    item.category = item_category
-    item.description = item_description
-    item.img = img
+    try:
+        img = request.FILES["images"]
+        item = Item.objects.get(id=item_id)
+        item.name = item_name
+        item.category = item_category
+        item.description = item_description
+        item.img = img
+        item.save()
+        return HttpResponseRedirect(reverse("user-admin"))
+    except:
+        item = Item.objects.get(id=item_id)
+        item.name = item_name
+        item.category = item_category
+        item.description = item_description
+        item.save()
+        return HttpResponseRedirect(reverse("user-admin"))
+
+def admin_add(request):
+    item_name = request.POST["item_name"]
+    item_category = request.POST["item_category"]
+    item_description = request.POST["item_description"]
+    img = request.FILES["images"]
+    item = Item(name=item_name, category=item_category, description=item_description, img=img)
     item.save()
     return HttpResponseRedirect(reverse("user-admin"))
 
-
-
-
-
+def admin_add_page(request):
+    try:
+        if request.session["username"] == 'admin':
+            return render(request, 'add_item.html')
+        else:
+            return render(request, 'index.html')
+    except:
+        return render(request, 'index.html')
 
 
 

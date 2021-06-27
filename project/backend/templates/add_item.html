@@ -1,0 +1,21 @@
+<!DOCTYPE>
+<html>
+    <header>
+    </header>
+    <body>
+        <h1>ADD ITEM</h1>
+
+        <form method="POST" enctype="multipart/form-data" action="{% url 'admin_add' %}">
+            {% csrf_token %}
+            <input type="text" name="item_name" value="" required>
+            <input type="text" name="item_category" value="" required>
+            <textarea id="textarea" name="item_description" rows="4" cols="50" required></textarea>
+            <input type="file" name="images" required>
+
+            <button type="submit">Add</button>
+        </form>
+
+        <p> {{ loginSuccess }}</p>
+        <p> {{ signupSuccess }}</p>
+    </body>
+</html>

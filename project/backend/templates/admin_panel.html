@@ -4,14 +4,8 @@
         Hi
     </header>
     <body>
-        <form method="POST">
-            {% csrf_token %}
-            <input type="text" name="type" style="display: none;" value="add">
-            <input type="text" name="name" placeholder="name">
-            <input type="text" name="category" placeholder="category">
-            <input type="text" name="description" placeholder="description">
-            <button type="submit">Add</button>
-        </form>
+
+        <a href='{% url "admin_add_page" %}'><h1>ADD ITEM</h1></a>
 
 
         <ul>
