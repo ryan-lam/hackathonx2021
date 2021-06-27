@@ -165,32 +165,52 @@ def saved(request):
         print("NEED TO LOGIN")
         return render(request, 'index.html')
 
+
+
+
+# ADMIN PANEL FUNCTIONS
 def user_admin(request):
-    if "username" not in request.session:
+    try:
+        if request.session["username"] != 'admin':
+            return render(request, 'index.html')
+        if request.method == 'GET':
+            items = Item.objects.all()
+            dps = DiscussionPost.objects.all()
+            courses = Course.objects.all()
+            return render(request, 'test.html', {
+                "items": items, "dps": dps, "courses": courses
+                })
+    except:
         return render(request, 'index.html')
-    if request.session["username"] != 'admin':
-        return render(request, 'index.html')
-    if request.method == 'GET':
-        items = Item.objects.all()
-        dps = DiscussionPost.objects.all()
-        courses = Course.objects.all()
-        return render(request, 'test.html', {"items": items, "dps": dps, "courses": courses})
-    elif request.method == 'POST':
-        if request.POST["type"] == 'edit':
-            item = Item.objects.get(id=request.POST["item-id"])
-            item.name = request.POST["new-name"]
-            item.save()
-        elif request.POST["type"] == 'delete':
-            item = Item.objects.get(id=request.POST["item-id"])
-            item.delete()
-        elif request.POST["type"] == 'add':
-            name = request.POST["name"]
-            category = request.POST["category"]
-            description = request.POST["description"]
-            img = '../media/images/apple-park.jpg'
-            item = Item(name=name, category=category, description=description, img=img)
-            item.save()
-        return HttpResponseRedirect(reverse('admin'))
+
+def admin_delete(request):
+    item_id = request.POST["item_id"]
+    item = Item.objects.get(id=item_id)
+    item.delete()
+    return HttpResponseRedirect(reverse("user-admin"))
+
+def admin_edit_page(request):
+    item_id = request.POST["item_id"]
+    item = Item.objects.get(id=item_id)
+    return render(request, "edit_item.html", {
+        "item":item
+    })
+
+def admin_edit(request):
+    item_id = request.POST["item_id"]
+    item_name = request.POST["item_name"]
+    item_category = request.POST["item_category"]
+    item_description = request.POST["item_description"]
+    img = request.FILES.getlist("images")
+    item = Item.objects.get(id=item_id)
+    item.name = item_name
+    item.category = item_category
+    item.description = item_description
+    item.img = img
+    item.save()
+    return HttpResponseRedirect(reverse("user-admin"))
+
+
 
 
 

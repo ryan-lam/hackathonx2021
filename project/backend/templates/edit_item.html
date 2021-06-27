@@ -1,0 +1,29 @@
+<!DOCTYPE>
+<html>
+    <header>
+        Hi
+    </header>
+    <body>
+
+        <h2>{{item.name}} - {{ item.category }}</h2>
+        <img src="{{ item.img.url }}" width="200">
+        <p>{{ item.description }}</p>
+
+        <form method="POST" enctype="multipart/form-data" action="{% url 'admin_edit' %}">
+            {% csrf_token %}
+
+            <input type="text" name="item_name" value="{{ item.name }}">
+            <input type="text" name="item_category" value="{{ item.category }}">
+            <textarea id="textarea" name="item_description" rows="4" cols="50">{{ item.description }}</textarea>
+            <input type="file" name="images">
+
+            <input type="hidden" name="item_id" value="{{ item.id }}">
+            <button type="submit">Edit</button>
+        </form>
+
+
+
+        <p> {{ loginSuccess }}</p>
+        <p> {{ signupSuccess }}</p>
+    </body>
+</html>

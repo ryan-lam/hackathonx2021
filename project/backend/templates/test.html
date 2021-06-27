@@ -12,26 +12,33 @@
             <input type="text" name="description" placeholder="description">
             <button type="submit">Add</button>
         </form>
+
+
         <ul>
             {% for item in items %}
-            <li> {{item.name}}     
-                <form method="POST">
+            <li> 
+                <h2>{{item.name}} - {{ item.category }}</h2>
+                <img src="{{ item.img.url }}" width="200">
+                <p>{{ item.description }}</p>
+
+                <form method="POST" action="{% url 'admin_edit_page' %}">
                     {% csrf_token %}
-                    <input type="text" name="type" style="display: none;" value="edit">
-                    <input type="number" name="item-id" style="display: none;" value="{{item.id}}">
-                    <input type="text" name="new-name" placeholder="new name">
+                    <input type="hidden" name="item_id" value="{{ item.id }}">
                     <button type="submit">Edit</button>
                 </form>
-                <form method="POST"> 
+
+                <form method="POST" action="{% url 'admin_delete' %}">
                     {% csrf_token %}
-                    <input type="text" name="type" style="display: none;" value="delete">
-                    <input type="number" name="item-id" style="display: none;" value="{{item.id}}">
+                    <input type="hidden" name="item_id" value="{{ item.id }}">
                     <button type="submit">Delete</button>
                 </form>
-    </li>
+
+            </li>
             {% endfor %}
         
         </ul>
+
+
         <p> {{ loginSuccess }}</p>
         <p> {{ signupSuccess }}</p>
     </body>
